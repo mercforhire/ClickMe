@@ -1,2 +1,2 @@
 # ClickMe
-ClickMe ios app
+ClickMe app for iOS
