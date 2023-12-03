@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view opaque="NO" contentMode="scaleToFill" id="iN0-l3-epB" customClass="SpeakerView" customModule="ClickMe" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c0X-Hu-qZH">
+                    <rect key="frame" x="20" y="10" width="60" height="60"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="c0X-Hu-qZH" secondAttribute="height" multiplier="1:1" id="0PM-RK-QMG"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ou6-QE-pDm" customClass="AvatarImage" customModule="ClickMe" customModuleProvider="target">
+                    <rect key="frame" x="20" y="10" width="60" height="60"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Johnny" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5Ap-ID-6V1">
+                    <rect key="frame" x="20" y="83" width="60" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V0h-i9-Bzy">
+                    <rect key="frame" x="8" y="0.0" width="23" height="23"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="23" id="PoC-FH-XM6"/>
+                        <constraint firstAttribute="width" constant="23" id="vnb-1g-5S9"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rd-zk-dB4">
+                    <rect key="frame" x="68" y="58" width="23" height="23"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="23" id="hsB-ws-mxm"/>
+                        <constraint firstAttribute="width" secondItem="6rd-zk-dB4" secondAttribute="height" multiplier="1:1" id="y4u-Vx-DtT"/>
+                    </constraints>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal">
+                        <imageReference key="image" image="mic.slash.fill" catalog="system" symbolScale="small"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="5Ap-ID-6V1" secondAttribute="bottom" id="1Wl-wd-6iw"/>
+                <constraint firstItem="6rd-zk-dB4" firstAttribute="bottom" secondItem="c0X-Hu-qZH" secondAttribute="bottom" constant="11" id="EAZ-8Q-dyo"/>
+                <constraint firstItem="V0h-i9-Bzy" firstAttribute="leading" secondItem="c0X-Hu-qZH" secondAttribute="leading" constant="-12" id="III-rb-nmt"/>
+                <constraint firstItem="c0X-Hu-qZH" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="OnQ-xI-E1h"/>
+                <constraint firstItem="c0X-Hu-qZH" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.6" id="VFT-za-GHI"/>
+                <constraint firstItem="5Ap-ID-6V1" firstAttribute="trailing" secondItem="c0X-Hu-qZH" secondAttribute="trailing" id="d6F-YR-C8X"/>
+                <constraint firstItem="ou6-QE-pDm" firstAttribute="trailing" secondItem="c0X-Hu-qZH" secondAttribute="trailing" id="eG4-H5-Di1"/>
+                <constraint firstItem="V0h-i9-Bzy" firstAttribute="top" secondItem="c0X-Hu-qZH" secondAttribute="top" constant="-10" id="epK-MX-Hb6"/>
+                <constraint firstItem="c0X-Hu-qZH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="gOa-aD-qKG"/>
+                <constraint firstItem="ou6-QE-pDm" firstAttribute="top" secondItem="c0X-Hu-qZH" secondAttribute="top" id="idn-KF-LX6"/>
+                <constraint firstItem="ou6-QE-pDm" firstAttribute="leading" secondItem="c0X-Hu-qZH" secondAttribute="leading" id="jxW-T9-EVU"/>
+                <constraint firstItem="5Ap-ID-6V1" firstAttribute="leading" secondItem="c0X-Hu-qZH" secondAttribute="leading" id="kMv-Nu-BhX"/>
+                <constraint firstItem="6rd-zk-dB4" firstAttribute="trailing" secondItem="c0X-Hu-qZH" secondAttribute="trailing" constant="11" id="pJe-9y-XSA"/>
+                <constraint firstItem="ou6-QE-pDm" firstAttribute="bottom" secondItem="c0X-Hu-qZH" secondAttribute="bottom" id="wdg-xq-MqH"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="avatar" destination="ou6-QE-pDm" id="EsT-Wm-PPP"/>
+                <outlet property="nameLabel" destination="5Ap-ID-6V1" id="HHC-WR-Lkx"/>
+                <outlet property="orderLabel" destination="V0h-i9-Bzy" id="oHG-89-uYL"/>
+                <outlet property="speakerButton" destination="6rd-zk-dB4" id="frb-Ws-Wej"/>
+            </connections>
+            <point key="canvasLocation" x="-86.956521739130437" y="-144.64285714285714"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="mic.slash.fill" catalog="system" width="108" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

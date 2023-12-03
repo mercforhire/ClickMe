@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>defaultBackground</key>
+	<string>#2D2D2D</string>
+	<key>whiteBackground</key>
+	<string>#121212</string>
+	<key>textLabel</key>
+	<string>#FFFFFF</string>
+	<key>textFieldBackground</key>
+	<string>#848484</string>
+	<key>indigo</key>
+	<string>#7B85F9</string>
+	<key>gold</key>
+	<string>#FFD013</string>
+	<key>darkLabel</key>
+	<string>#FFFFFF</string>
+	<key>topicName</key>
+	<string>#000000</string>
+	<key>chatBox</key>
+	<string>#F6F6F6</string>
+	<key>greenSendIcon</key>
+	<string>#44B994</string>
+	<key>Tutorial</key>
+	<dict>
+		<key>textColor</key>
+		<string>rgb 255 255 255</string>
+		<key>bubbleBackgroundColor</key>
+		<string>rgb 75 75 75</string>
+	</dict>
+	<key>TabBar</key>
+	<dict>
+		<key>selectedColor</key>
+		<string>#7B85F9</string>
+		<key>selectedTextColor</key>
+		<string>#7B85F9</string>
+		<key>unSelectedColor</key>
+		<string>#B7B7B7</string>
+		<key>unSelectedTextColor</key>
+		<string>#B7B7B7</string>
+	</dict>
+	<key>NavBar</key>
+	<dict>
+		<key>backgroundColor</key>
+		<string>#2D2D2D</string>
+		<key>textColor</key>
+		<string>#FFFFFF</string>
+		<key>font</key>
+		<dict>
+			<key>weight</key>
+			<string>regular</string>
+			<key>size</key>
+			<integer>17</integer>
+			<key>font</key>
+			<string>SFUIDisplay</string>
+		</dict>
+		<key>BarButton</key>
+		<dict>
+			<key>font</key>
+			<dict>
+				<key>weight</key>
+				<string>black</string>
+				<key>size</key>
+				<integer>17</integer>
+				<key>font</key>
+				<string>SFUIDisplay</string>
+			</dict>
+			<key>textColor</key>
+			<string>#FFFFFF</string>
+		</dict>
+	</dict>
+</dict>
+</plist>
