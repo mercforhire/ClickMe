@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -60,7 +60,6 @@
 		72172FE226EA81E6009DF8E0 /* TopicDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A9E227262A68CD00AC60A2 /* TopicDetailViewController.swift */; };
 		72172FE326EA81E6009DF8E0 /* TimeZone+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72778A0A26A242620007A896 /* TimeZone+Extensions.swift */; };
 		72172FE426EA81E6009DF8E0 /* UISearchBar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7228AF2C26248D0700FFC69B /* UISearchBar+Extensions.swift */; };
-		72172FE526EA81E6009DF8E0 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7284A474263657A800D99B56 /* ChangePasswordViewController.swift */; };
 		72172FE626EA81E6009DF8E0 /* ChatOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72152A5B26272A1D0090D5E4 /* ChatOptionsViewController.swift */; };
 		72172FE726EA81E6009DF8E0 /* AppSettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722B07982660A78D00FC7595 /* AppSettingsManager.swift */; };
 		72172FE826EA81E6009DF8E0 /* ClickAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 722B07932660A52D00FC7595 /* ClickAPI.swift */; };
@@ -100,7 +99,6 @@
 		7217300B26EA81E6009DF8E0 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72639832261E28EA00D1ECE2 /* UIView+Extensions.swift */; };
 		7217300C26EA81E6009DF8E0 /* RequestOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72964D7C263CFDBC00E39EB1 /* RequestOverviewViewController.swift */; };
 		7217300D26EA81E6009DF8E0 /* ManagementRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FF7D32263C5C2100DEA4C9 /* ManagementRootViewController.swift */; };
-		7217300E26EA81E6009DF8E0 /* ForgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72639882261F80DC00D1ECE2 /* ForgetViewController.swift */; };
 		7217300F26EA81E6009DF8E0 /* EditEducationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725CD79E263A5948008D4DC0 /* EditEducationViewController.swift */; };
 		7217301026EA81E6009DF8E0 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F940FD2631EBE9007B4EB6 /* UITableView+Extensions.swift */; };
 		7217301126EA81E6009DF8E0 /* ExploreUserParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A377EE26841F860008B6E0 /* ExploreUserParams.swift */; };
@@ -389,7 +387,6 @@
 		72639869261F5B5500D1ECE2 /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72639868261F5B5500D1ECE2 /* GetStartedViewController.swift */; };
 		72639878261F633700D1ECE2 /* GetStartedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72639877261F633700D1ECE2 /* GetStartedCell.swift */; };
 		7263987D261F765400D1ECE2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7263987C261F765400D1ECE2 /* LoginViewController.swift */; };
-		72639883261F80DC00D1ECE2 /* ForgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72639882261F80DC00D1ECE2 /* ForgetViewController.swift */; };
 		7264027D26DE9382006A0349 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7264027C26DE9382006A0349 /* Double+Extensions.swift */; };
 		7264028C26DED15A006A0349 /* SF-UI-Display-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7264028526DEBDFB006A0349 /* SF-UI-Display-Black.otf */; };
 		7264028D26DED15A006A0349 /* SF-UI-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7264028826DEBDFC006A0349 /* SF-UI-Display-Bold.otf */; };
@@ -443,7 +440,6 @@
 		7284A46B2635F91300D99B56 /* ChangeEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7284A46A2635F91300D99B56 /* ChangeEmailViewController.swift */; };
 		7284A46F2635F92100D99B56 /* ChangePhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7284A46E2635F92100D99B56 /* ChangePhoneNumberViewController.swift */; };
 		7284A47226364B6600D99B56 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7284A47126364B6600D99B56 /* UIViewController+Extension.swift */; };
-		7284A475263657A800D99B56 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7284A474263657A800D99B56 /* ChangePasswordViewController.swift */; };
 		7284A47B263666D800D99B56 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7284A478263666D800D99B56 /* ToastView.swift */; };
 		7284A47C263666D800D99B56 /* ToastView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7284A479263666D800D99B56 /* ToastView.xib */; };
 		7284A47D263666D800D99B56 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7284A47A263666D800D99B56 /* Toast.swift */; };
@@ -645,7 +641,6 @@
 		72152A652627358B0090D5E4 /* ReportMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMenuViewController.swift; sourceTree = "<group>"; };
 		7216124F26D416170070DDA0 /* ClickMe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ClickMe.entitlements; sourceTree = "<group>"; };
 		721730D426EA81E6009DF8E0 /* ClickMe Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ClickMe Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		721730D526EA81E6009DF8E0 /* ClickMe copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "ClickMe copy-Info.plist"; path = "/Users/LeonChen/Documents/clickme_ios/ClickMe copy-Info.plist"; sourceTree = "<absolute>"; };
 		721730DD26ED31F3009DF8E0 /* dark-theme.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "dark-theme.plist"; sourceTree = "<group>"; };
 		721730DE26ED31F3009DF8E0 /* light-theme.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "light-theme.plist"; sourceTree = "<group>"; };
 		721730E326ED3894009DF8E0 /* ThemeData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeData.swift; sourceTree = "<group>"; };
@@ -727,7 +722,6 @@
 		72639868261F5B5500D1ECE2 /* GetStartedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
 		72639877261F633700D1ECE2 /* GetStartedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedCell.swift; sourceTree = "<group>"; };
 		7263987C261F765400D1ECE2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		72639882261F80DC00D1ECE2 /* ForgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetViewController.swift; sourceTree = "<group>"; };
 		7264027C26DE9382006A0349 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		7264028526DEBDFB006A0349 /* SF-UI-Display-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Black.otf"; sourceTree = "<group>"; };
 		7264028626DEBDFB006A0349 /* SF-UI-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Regular.otf"; sourceTree = "<group>"; };
@@ -777,7 +771,6 @@
 		7284A46A2635F91300D99B56 /* ChangeEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailViewController.swift; sourceTree = "<group>"; };
 		7284A46E2635F92100D99B56 /* ChangePhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePhoneNumberViewController.swift; sourceTree = "<group>"; };
 		7284A47126364B6600D99B56 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
-		7284A474263657A800D99B56 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		7284A478263666D800D99B56 /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		7284A479263666D800D99B56 /* ToastView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToastView.xib; sourceTree = "<group>"; };
 		7284A47A263666D800D99B56 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
@@ -1277,7 +1270,6 @@
 				72A9E12D2628AC7000AC60A2 /* LoginInitialViewController.swift */,
 				7263987C261F765400D1ECE2 /* LoginViewController.swift */,
 				72D2E9412620B51F00A4BE1C /* SignUpViewController.swift */,
-				72639882261F80DC00D1ECE2 /* ForgetViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1478,7 +1470,6 @@
 				7284A45F26354EFB00D99B56 /* AccountSettingsViewController.swift */,
 				7284A46A2635F91300D99B56 /* ChangeEmailViewController.swift */,
 				7284A46E2635F92100D99B56 /* ChangePhoneNumberViewController.swift */,
-				7284A474263657A800D99B56 /* ChangePasswordViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1514,7 +1505,6 @@
 				72881E04261C9686002810EC /* Products */,
 				AF423A386854607833B339A6 /* Pods */,
 				924EB2CCAAD72D49F4762FB8 /* Frameworks */,
-				721730D526EA81E6009DF8E0 /* ClickMe copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2161,7 +2151,6 @@
 				72172FE226EA81E6009DF8E0 /* TopicDetailViewController.swift in Sources */,
 				72172FE326EA81E6009DF8E0 /* TimeZone+Extensions.swift in Sources */,
 				72172FE426EA81E6009DF8E0 /* UISearchBar+Extensions.swift in Sources */,
-				72172FE526EA81E6009DF8E0 /* ChangePasswordViewController.swift in Sources */,
 				72172FE626EA81E6009DF8E0 /* ChatOptionsViewController.swift in Sources */,
 				72172FE726EA81E6009DF8E0 /* AppSettingsManager.swift in Sources */,
 				72172FE826EA81E6009DF8E0 /* ClickAPI.swift in Sources */,
@@ -2207,7 +2196,6 @@
 				7217300B26EA81E6009DF8E0 /* UIView+Extensions.swift in Sources */,
 				7217300C26EA81E6009DF8E0 /* RequestOverviewViewController.swift in Sources */,
 				7217300D26EA81E6009DF8E0 /* ManagementRootViewController.swift in Sources */,
-				7217300E26EA81E6009DF8E0 /* ForgetViewController.swift in Sources */,
 				7217300F26EA81E6009DF8E0 /* EditEducationViewController.swift in Sources */,
 				7217301026EA81E6009DF8E0 /* UITableView+Extensions.swift in Sources */,
 				72BEA02E26EDE5A200C31F7D /* ThemeBackView.swift in Sources */,
@@ -2434,7 +2422,6 @@
 				72A9E228262A68CD00AC60A2 /* TopicDetailViewController.swift in Sources */,
 				72778A0B26A242620007A896 /* TimeZone+Extensions.swift in Sources */,
 				7228AF2D26248D0700FFC69B /* UISearchBar+Extensions.swift in Sources */,
-				7284A475263657A800D99B56 /* ChangePasswordViewController.swift in Sources */,
 				72152A5C26272A1D0090D5E4 /* ChatOptionsViewController.swift in Sources */,
 				722B07992660A78D00FC7595 /* AppSettingsManager.swift in Sources */,
 				722B07942660A52D00FC7595 /* ClickAPI.swift in Sources */,
@@ -2480,7 +2467,6 @@
 				72639833261E28EA00D1ECE2 /* UIView+Extensions.swift in Sources */,
 				72964D7D263CFDBC00E39EB1 /* RequestOverviewViewController.swift in Sources */,
 				72FF7D33263C5C2100DEA4C9 /* ManagementRootViewController.swift in Sources */,
-				72639883261F80DC00D1ECE2 /* ForgetViewController.swift in Sources */,
 				725CD79F263A5948008D4DC0 /* EditEducationViewController.swift in Sources */,
 				72F940FE2631EBE9007B4EB6 /* UITableView+Extensions.swift in Sources */,
 				72BEA02D26EDE5A200C31F7D /* ThemeBackView.swift in Sources */,

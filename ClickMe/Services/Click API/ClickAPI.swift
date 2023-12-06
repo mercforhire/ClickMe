@@ -11,7 +11,12 @@ import Alamofire
 class ClickAPI {
     static let shared = ClickAPI()
     
-    var baseURL = "http://15.222.166.60"
+    var environment: Environments {
+        return AppSettingsManager.shared.getEnvironment()
+    }
+    var baseURL: String {
+        return environment.hostUrl()
+    }
     let service: NetworkService
     
     init() {
@@ -33,23 +38,8 @@ class ClickAPI {
         }
     }
     
-    func getSMSCode(areaCode: String, phone: String, callBack: @escaping(Result<Bool, AFError>) -> Void) {
-        let params = ["areaCode": areaCode, "phone": phone]
-        let url = baseURL + APIRequestURLs.getSMSCode.rawValue
-        
-        service.httpRequest(url: url, method: APIRequestURLs.getSMSCode.getHTTPMethod(), parameters: params, headers: Headers.defaultHeader()) { (result: AFResult<DefaultResponse>) in
-            switch result {
-            case .success:
-                callBack(.success(true))
-            case .failure(let error):
-                callBack(.failure(error))
-                print ("Error occured \(error)")
-            }
-        }
-    }
-    
-    func login(email: String, password: String, callBack: @escaping(Result<TokenResponse, AFError>) -> Void) {
-        let params = ["email": email, "password": password]
+    func login(email: String, code: String, callBack: @escaping(Result<TokenResponse, AFError>) -> Void) {
+        let params = ["email": email, "code": code]
         let url = baseURL + APIRequestURLs.signInWithEmail.rawValue
         
         service.httpRequest(url: url, method: APIRequestURLs.signInWithEmail.getHTTPMethod(), parameters: params, headers: Headers.defaultHeader()) { (result: AFResult<TokenResponse>) in
@@ -63,47 +53,12 @@ class ClickAPI {
         }
     }
     
-    func login(areaCode: String, phone: String, smsCode: String, callBack: @escaping(Result<TokenResponse, AFError>) -> Void) {
-        let params = ["areaCode": areaCode,
-                      "phone": phone,
-                      "smscode": smsCode]
-        let url = baseURL + APIRequestURLs.signInWithPhone.rawValue
-        
-        service.httpRequest(url: url, method: APIRequestURLs.signInWithPhone.getHTTPMethod(), parameters: params, headers: Headers.defaultHeader()) { (result: AFResult<TokenResponse>) in
-            switch result {
-            case .success(let response):
-                callBack(.success(response))
-            case .failure(let error):
-                callBack(.failure(error))
-                print ("Error occured \(error)")
-            }
-        }
-    }
-    
-    func signUpWithEmail(email: String, emailCode: String, password: String, callBack: @escaping(Result<Bool, AFError>) -> Void) {
+    func signUpWithEmail(email: String, emailCode: String, callBack: @escaping(Result<Bool, AFError>) -> Void) {
         let params = ["email": email,
-                      "emailCode": emailCode,
-                      "password": password]
+                      "emailCode": emailCode]
         let url = baseURL + APIRequestURLs.signUpWithEmail.rawValue
         
         service.httpRequest(url: url, method: APIRequestURLs.signUpWithEmail.getHTTPMethod(), parameters: params, headers: Headers.defaultHeader()) { (result: AFResult<DefaultResponse>) in
-            switch result {
-            case .success:
-                callBack(.success(true))
-            case .failure(let error):
-                callBack(.failure(error))
-                print ("Error occured \(error)")
-            }
-        }
-    }
-    
-    func signUpWithPhone(areaCode: String, phone: String, smsCode: String, callBack: @escaping(Result<Bool, AFError>) -> Void) {
-        let params = ["areaCode": areaCode,
-                      "phone": phone,
-                      "smscode": smsCode]
-        let url = baseURL + APIRequestURLs.signUpWithPhone.rawValue
-        
-        service.httpRequest(url: url, method: APIRequestURLs.signUpWithPhone.getHTTPMethod(), parameters: params, headers: Headers.defaultHeader()) { (result: AFResult<DefaultResponse>) in
             switch result {
             case .success:
                 callBack(.success(true))
@@ -147,23 +102,6 @@ class ClickAPI {
         let url = baseURL + APIRequestURLs.updateProfile.rawValue
 
         service.httpRequestSimple(url: url, method: APIRequestURLs.updateProfile.getHTTPMethod(), parameters: updateForm.params(), headers: Headers.defaultHeader()) { result in
-            switch result {
-            case .success:
-                callBack(.success(true))
-            case .failure(let error):
-                callBack(.failure(error))
-                print ("Error occured \(error)")
-            }
-        }
-    }
-    
-    func forgetPassword(email: String, emailCode: String, newPassword: String, callBack: @escaping(Result<Bool, AFError>) -> Void) {
-        let params = ["email": email,
-                      "emailCode": emailCode,
-                      "newPassword": newPassword]
-        
-        let url = baseURL + APIRequestURLs.forgetPassword.rawValue
-        service.httpRequestSimple(url: url, method: APIRequestURLs.forgetPassword.getHTTPMethod(), parameters: params, headers: Headers.defaultHeader()) { result in
             switch result {
             case .success:
                 callBack(.success(true))
@@ -410,45 +348,12 @@ class ClickAPI {
         }
     }
     
-    func changePhone(areaCode: String, phone: String, smsCode: String, callBack: @escaping(Result<Bool, AFError>) -> Void) {
-        let url = baseURL + APIRequestURLs.changePhone.rawValue
-        let params = ["areaCode": areaCode,
-                      "phoneNumber": phone,
-                      "smsCode": smsCode]
-        
-        service.httpRequestSimple(url: url, method: APIRequestURLs.changePhone.getHTTPMethod(), parameters: params, headers: Headers.defaultHeader()) { result in
-            switch result {
-            case .success:
-                callBack(.success(true))
-            case .failure(let error):
-                callBack(.failure(error))
-                print ("Error occured \(error)")
-            }
-        }
-    }
-    
     func changeEmail(newEmail: String, emailCode: String, callBack: @escaping(Result<Bool, AFError>) -> Void) {
         let url = baseURL + APIRequestURLs.changeEmail.rawValue
         let params = ["email": newEmail,
                       "emailCode": emailCode]
         
         service.httpRequestSimple(url: url, method: APIRequestURLs.changeEmail.getHTTPMethod(), parameters: params, headers: Headers.defaultHeader()) { result in
-            switch result {
-            case .success:
-                callBack(.success(true))
-            case .failure(let error):
-                callBack(.failure(error))
-                print ("Error occured \(error)")
-            }
-        }
-    }
-    
-    func changePassword(oldPassword: String, password: String, callBack: @escaping(Result<Bool, AFError>) -> Void) {
-        let url = baseURL + APIRequestURLs.changePassword.rawValue
-        let params = ["oldPassword": oldPassword,
-                      "password": password]
-        
-        service.httpRequestSimple(url: url, method: APIRequestURLs.changePassword.getHTTPMethod(), parameters: params, headers: Headers.defaultHeader()) { result in
             switch result {
             case .success:
                 callBack(.success(true))

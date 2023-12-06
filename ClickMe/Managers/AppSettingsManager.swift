@@ -28,8 +28,6 @@ class AppSettingsManager {
     private let EnvironmentKey : String = "Environment"
     private let GetStartedViewedKey : String = "GetStartedViewed"
     private let HasBeenToHostViewKey : String = "HasBeenToHostView"
-    private let LastUsedAreaCodeKey : String = "LastUsedAreaCode"
-    private let LastUsedPhoneKey : String = "LastUsedPhone"
     private let LastUsedEmailKey : String = "LastUsedEmail"
     private let LastUsedMode : String = "LastUsedMode"
     private let DeviceToken : String = "DeviceToken"
@@ -94,24 +92,6 @@ class AppSettingsManager {
     
     func setLastUsedEmail(email: String?) {
         settings[LastUsedEmailKey] = email
-        saveSettings()
-    }
-    
-    func getLastUsedAreaCode() -> String? {
-        return settings[LastUsedAreaCodeKey] as? String
-    }
-    
-    func setLastUsedAreaCode(areaCode: String?) {
-        settings[LastUsedAreaCodeKey] = areaCode
-        saveSettings()
-    }
-    
-    func getLastUsedPhone() -> String? {
-        return settings[LastUsedPhoneKey] as? String
-    }
-    
-    func setLastUsedPhone(phone: String?) {
-        settings[LastUsedPhoneKey] = phone
         saveSettings()
     }
     

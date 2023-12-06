@@ -10,11 +10,6 @@ import UIKit
 
 let MinimalRedeem = 500
 
-enum LoginMode {
-    case phone
-    case email
-}
-
 enum FollowStatus: Int {
     case notFollowing
     case following

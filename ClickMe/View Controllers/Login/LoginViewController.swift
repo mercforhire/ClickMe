@@ -6,71 +6,20 @@
 //
 
 import UIKit
-import FMSecureTextField
-import SKCountryPicker
 
 class LoginViewController: BaseScrollingViewController {
     enum AutoLoginMethod {
-        case email(email: String, password: String)
-        case phone(areaCode: String, phoneNumber: String, code: String)
+        case email(email: String, code: String)
     }
     
     var autoLogin: AutoLoginMethod?
     
-    @IBOutlet weak var phoneButton: UIButton!
-    @IBOutlet weak var emailButton: UIButton!
-    
-    @IBOutlet weak var phoneContainer: UIView!
-    @IBOutlet weak var flagImageView: UIImageView!
-    @IBOutlet weak var areaCodeContainer: UIView!
-    @IBOutlet weak var areaCodeField: UITextField!
-    @IBOutlet weak var phoneField: PaddedTextField!
-    @IBOutlet weak var phoneErrorLabel: UILabel!
-    @IBOutlet weak var phoneCodeField: PaddedTextField!
-    @IBOutlet weak var phoneCodeErrorLabel: UILabel!
-    @IBOutlet weak var getPhoneCodeButton: UIButton!
-    
     @IBOutlet weak var emailContainer: UIView!
     @IBOutlet weak var emailField: PaddedTextField!
     @IBOutlet weak var emailErrorLabel: UILabel!
-    @IBOutlet weak var passwordField: FMSecureTextField!
-    @IBOutlet weak var passErrorLabel: UILabel!
-    
+    @IBOutlet weak var codeField: PaddedTextField!
+    @IBOutlet weak var codeErrorLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var forgetButton: UIButton!
-    
-    override var selectedCountry: Country? {
-        didSet {
-            self.areaCodeField.text = selectedCountry?.dialingCode
-            self.flagImageView.image = selectedCountry?.flag
-        }
-    }
-    
-    var phoneErrorString: String? {
-        didSet {
-            if let phoneErrorString = phoneErrorString, !phoneErrorString.isEmpty {
-                phoneErrorLabel.text = phoneErrorString
-                phoneField.layer.borderColor = UIColor.red.cgColor
-                phoneField.layer.borderWidth = 1.0
-            } else {
-                phoneErrorLabel.text = ""
-                phoneField.layer.borderWidth = 0
-            }
-        }
-    }
-    
-    var phoneCodeErrorString: String? {
-        didSet {
-            if let phoneCodeErrorString = phoneCodeErrorString, !phoneCodeErrorString.isEmpty {
-                phoneCodeErrorLabel.text = phoneCodeErrorString
-                phoneCodeField.layer.borderColor = UIColor.red.cgColor
-                phoneCodeField.layer.borderWidth = 1.0
-            } else {
-                phoneCodeErrorLabel.text = ""
-                phoneCodeField.layer.borderWidth = 0
-            }
-        }
-    }
     
     var emailErrorString: String? {
         didSet {
@@ -85,70 +34,37 @@ class LoginViewController: BaseScrollingViewController {
         }
     }
     
-    var passErrorString: String? {
+    var codeErrorString: String? {
         didSet {
-            if let passErrorString = passErrorString, !passErrorString.isEmpty {
-                passErrorLabel.text = passErrorString
-                passwordField.layer.borderColor = UIColor.red.cgColor
-                passwordField.layer.borderWidth = 1.0
+            if let passErrorString = codeErrorString, !passErrorString.isEmpty {
+                codeErrorLabel.text = passErrorString
+                codeField.layer.borderColor = UIColor.red.cgColor
+                codeField.layer.borderWidth = 1.0
             } else {
-                passErrorLabel.text = ""
-                passwordField.layer.borderWidth = 0
+                codeErrorLabel.text = ""
+                codeField.layer.borderWidth = 0
             }
         }
     }
     
-    var mode: LoginMode = .phone {
-        didSet {
-            switch mode {
-            case .phone:
-                phoneContainer.isHidden = false
-                emailContainer.isHidden = true
-                phoneButton.setTitleColor(themeManager.themeData?.textLabel.hexColor, for: .normal)
-                emailButton.setTitleColor(UIColor.lightGray, for: .normal)
-                forgetButton.isHidden = true
-            case .email:
-                phoneContainer.isHidden = true
-                emailContainer.isHidden = false
-                phoneButton.setTitleColor(UIColor.lightGray, for: .normal)
-                emailButton.setTitleColor(themeManager.themeData?.textLabel.hexColor, for: .normal)
-                forgetButton.isHidden = false
-            }
-        }
-    }
     
     override func setup() {
         super.setup()
-        
-        areaCodeContainer.addBorder()
-        
-        phoneField.roundCorners()
-        phoneField.addBorder()
-        phoneField.textInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-        phoneField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-        
-        phoneCodeField.roundCorners()
-        phoneCodeField.addBorder()
-        phoneCodeField.textInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-        phoneCodeField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
         emailField.roundCorners()
         emailField.addBorder()
         emailField.textInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         
-        passwordField.roundCorners()
-        passwordField.addBorder()
-        passwordField.addLeftInset()
+        codeField.roundCorners()
+        codeField.addBorder()
+        codeField.addLeftInset()
         
-        phoneErrorLabel.text = ""
-        phoneCodeErrorLabel.text = ""
         emailErrorLabel.text = ""
-        passErrorLabel.text = ""
+        codeErrorLabel.text = ""
         
-        mode = .phone
+        emailContainer.isHidden = false
         
         showBackground()
-        attachCountryPicker(to: areaCodeField)
     }
     
     override func setupTheme() {
@@ -157,23 +73,12 @@ class LoginViewController: BaseScrollingViewController {
         contentView.backgroundColor = themeManager.themeData?.defaultBackground.hexColor
         scrollView.backgroundColor = contentView.backgroundColor
         scrollView.subviews[0].backgroundColor = contentView.backgroundColor
-        
-        mode = { self.mode }()
-        passwordField.applyTheme()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    
-        if let lastUsedAreaCode = appSettings.getLastUsedAreaCode() {
-            areaCodeField.text = lastUsedAreaCode
-        } else {
-            selectedCountry = getCurrentCountry()
-        }
         
-        phoneField.text = appSettings.getLastUsedPhone()
+        // Do any additional setup after loading the view.
         emailField.text = appSettings.getLastUsedEmail()
     }
     
@@ -188,17 +93,8 @@ class LoginViewController: BaseScrollingViewController {
         
         if let autoLogin = autoLogin {
             switch autoLogin {
-            case .phone(let areaCode, let phoneNumber, let code):
-                mode = .phone
-                areaCodeField.text = areaCode
-                phoneField.text = phoneNumber
-                phoneCodeField.text = code
-                loginPressed(loginButton)
-            case .email(let email, let password):
-                mode = .email
+            case .email(let email, let token):
                 emailField.text = email
-                passwordField.text = password
-                loginPressed(loginButton)
             }
             self.autoLogin = nil
         }
@@ -213,155 +109,72 @@ class LoginViewController: BaseScrollingViewController {
     
     @IBAction func loginPressed(_ sender: UIButton) {
         if validate() {
-            switch mode {
-            case .phone:
-                guard let areaCode = areaCodeField.text, !areaCode.isEmpty,
-                    let phoneNumber = phoneField.text, !phoneNumber.isEmpty,
-                      let code = phoneCodeField.text, !code.isEmpty else { return }
+            guard let email = emailField.text, !email.isEmpty,
+                  let code = codeField.text, !code.isEmpty else { return }
+            
+            appSettings.setLastUsedEmail(email: email)
+            
+            FullScreenSpinner().show()
+            var isSuccess: Bool = true
+            let queue = DispatchQueue.global(qos: .background)
+            
+            queue.async { [weak self] in
+                guard let self = self else { return }
                 
-                appSettings.setLastUsedPhone(phone: phoneNumber)
+                let semaphore = DispatchSemaphore(value: 0)
                 
-                FullScreenSpinner().show()
-                
-                var isSuccess: Bool = true
-                let queue = DispatchQueue.global(qos: .default)
-                
-                queue.async { [weak self] in
-                    guard let self = self else { return }
-                    
-                    let semaphore = DispatchSemaphore(value: 0)
-                    
-                    self.userManager.login(areaCode: areaCode, phone: phoneNumber, verifyCode: code) { success in
-                        isSuccess = success
-                        semaphore.signal()
-                    }
-                    semaphore.wait()
-                    
-                    guard isSuccess else {
-                        DispatchQueue.main.async {
-                            FullScreenSpinner().hide()
-                        }
-                        return
-                    }
-                    
-                    self.userManager.fetchUser { success in
-                        isSuccess = success
-                        semaphore.signal()
-                    }
-                    semaphore.wait()
-                    
-                    DispatchQueue.main.async { [weak self] in
-                        guard let self = self else { return }
-                        
-                        FullScreenSpinner().hide()
-                        
-                        if isSuccess {
-                            self.proceedPassLogin()
-                        }
-                    }
+                self.userManager.login(email: email, code: code) { success in
+                    isSuccess = success
+                    semaphore.signal()
                 }
-
-            case .email:
-                guard let email = emailField.text, !email.isEmpty,
-                      let password = passwordField.text, !password.isEmpty else { return }
+                semaphore.wait()
                 
-                appSettings.setLastUsedEmail(email: email)
+                guard isSuccess else {
+                    DispatchQueue.main.async {
+                        FullScreenSpinner().hide()
+                    }
+                    return
+                }
                 
-                FullScreenSpinner().show()
-                var isSuccess: Bool = true
-                let queue = DispatchQueue.global(qos: .background)
+                self.userManager.fetchUser { success in
+                    isSuccess = success
+                    semaphore.signal()
+                }
+                semaphore.wait()
                 
-                queue.async { [weak self] in
+                DispatchQueue.main.async { [weak self] in
                     guard let self = self else { return }
                     
-                    let semaphore = DispatchSemaphore(value: 0)
+                    FullScreenSpinner().hide()
                     
-                    self.userManager.login(email: email, password: password) { success in
-                        isSuccess = success
-                        semaphore.signal()
-                    }
-                    semaphore.wait()
-                    
-                    guard isSuccess else {
-                        DispatchQueue.main.async {
-                            FullScreenSpinner().hide()
-                        }
-                        return
-                    }
-                    
-                    self.userManager.fetchUser { success in
-                        isSuccess = success
-                        semaphore.signal()
-                    }
-                    semaphore.wait()
-                    
-                    DispatchQueue.main.async { [weak self] in
-                        guard let self = self else { return }
-                        
-                        FullScreenSpinner().hide()
-                        
-                        if isSuccess {
-                            self.proceedPassLogin()
-                        }
+                    if isSuccess {
+                        self.proceedPassLogin()
                     }
                 }
             }
         }
     }
     
+    
     private func validate() -> Bool {
-        switch mode {
-        case .phone:
-            if (phoneField.text ?? "").isEmpty {
-                phoneErrorString = "* Phone number is empty"
-                return false
-            } else if let phoneNumber = phoneField.text,
-                      !Validator.validate(string: phoneNumber, validation: .numeric) {
-                phoneErrorString = "* Phone number is invalid"
-                return false
-            } else if (phoneCodeField.text ?? "").isEmpty {
-                phoneErrorString = ""
-                phoneCodeErrorString = "* Verification code is empty"
-                return false
-            } else {
-                phoneErrorString = ""
-                phoneCodeErrorString = ""
-            }
+        if (emailField.text ?? "").isEmpty {
+            emailErrorString = "* Email is empty"
+            return false
+        } else if let email = emailField.text, !Validator.validate(string: email, validation: .email) {
+            emailErrorString = "* Invalid email"
+            return false
+        } else {
+            emailErrorString = ""
+        }
         
-        case .email:
-            if (emailField.text ?? "").isEmpty {
-                emailErrorString = "* Email is empty"
-                return false
-            } else if let email = emailField.text, !Validator.validate(string: email, validation: .email) {
-                emailErrorString = "* Invalid email"
-                return false
-            } else {
-                emailErrorString = ""
-            }
-            
-            if (passwordField.text ?? "").isEmpty {
-                passErrorString = "* Password is empty"
-                return false
-            } else {
-                passErrorString = ""
-            }
+        if (codeField.text ?? "").isEmpty {
+            codeErrorString = "* Code is empty"
+            return false
+        } else {
+            codeErrorString = ""
         }
         
         return true
-    }
-    
-    @IBAction func phonePress(_ sender: Any) {
-        mode = .phone
-    }
-    
-    @IBAction func emailPress(_ sender: Any) {
-        mode = .email
-    }
-    
-    @IBAction func sendPhoneCode(_ sender: UIButton) {
-        guard let areaCode = areaCodeField.text, !areaCode.isEmpty, let phoneNumber = phoneField.text, !phoneNumber.isEmpty else { return }
-        
-        userManager.sendPhoneCode(sender: sender, areaCode: areaCode, phone: phoneNumber)
     }
     
     private func proceedPassLogin() {
@@ -392,14 +205,12 @@ class LoginViewController: BaseScrollingViewController {
             if tappedNumber >= 10 {
                 let ac = UIAlertController(title: nil, message: "Choose environment", preferredStyle: .actionSheet)
                 let action1 = UIAlertAction(title: "Production\(AppSettingsManager.shared.getEnvironment() == .production ? "(Selected)" : "")", style: .default) { [weak self] action in
-                    ClickAPI.shared.baseURL = Environments.production.hostUrl()
                     AppSettingsManager.shared.setEnvironment(environments: .production)
                     self?.clearFields()
                 }
                 ac.addAction(action1)
                 
                 let action2 = UIAlertAction(title: "Development\(AppSettingsManager.shared.getEnvironment() == .development ? "(Selected)" : "")", style: .default) { [weak self] action in
-                    ClickAPI.shared.baseURL = Environments.development.hostUrl()
                     AppSettingsManager.shared.setEnvironment(environments: .development)
                     self?.clearFields()
                 }
@@ -425,35 +236,16 @@ class LoginViewController: BaseScrollingViewController {
     }
 }
 
-extension LoginViewController {    
-    @objc private func textFieldDidChange(_ textfield: UITextField) {
-        if textfield == phoneCodeField || textfield == phoneField {
-            textfield.text = textfield.text?.numbers
-        }
-    }
-    
+extension LoginViewController {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        switch mode {
-        case .phone:
-            if textField == areaCodeField {
-                // next action
-                phoneField.becomeFirstResponder()
-            } else if textField == phoneField {
-                // return action
-                phoneField.resignFirstResponder()
-            } else {
-                textField.resignFirstResponder()
-            }
-        case .email:
-            if textField == emailField {
-                // next action
-                _ = passwordField.becomeFirstResponder()
-            } else if textField == passwordField {
-                // return action
-                passwordField.resignFirstResponder()
-            } else {
-                textField.resignFirstResponder()
-            }
+        if textField == emailField {
+            // next action
+            _ = codeField.becomeFirstResponder()
+        } else if textField == codeField {
+            // return action
+            codeField.resignFirstResponder()
+        } else {
+            textField.resignFirstResponder()
         }
         
         return true

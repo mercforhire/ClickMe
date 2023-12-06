@@ -9,14 +9,10 @@ import Foundation
 import Alamofire
 
 enum APIRequestURLs: String {
-    case getSMSCode = "/api/users/authentication/getSmsCode"
     case getEmailCode = "/api/users/authentication/getEmailCode"
     case refreshToken = "/api/users/authentication/refreshToken"
     case signInWithEmail = "/api/users/authentication/signInWithEmail"
-    case signInWithPhone = "/api/users/authentication/signInWithPhone"
     case signUpWithEmail = "/api/users/authentication/signUpWithEmail"
-    case signUpWithPhone = "/api/users/authentication/signUpWithPhone"
-    case forgetPassword = "/api/users/authentication/forgetPassword"
     
     case exploreUsers = "/api/users/dataquery/secure/exploreUsers"
     case followUser = "/api/users/dataquery/secure/followUser"
@@ -79,8 +75,6 @@ enum APIRequestURLs: String {
     case deletePhotos = "/api/users/account_update/secure/deletePhotos"
     case deleteVideo = "/api/users/account_update/secure/deleteVideo"
     case uploadVideo = "/api/users/account_update/secure/uploadVideo"
-    case changePhone = "/api/users/account_update/secure/changePhone"
-    case changePassword = "/api/users/account_update/secure/changePassword"
     case changeEmail = "/api/users/account_update/secure/changeEmail"
     case followOrUnfollowSchedule = "/api/users/account_update/secure/followOrUnfollowSchedule"
     case verifyPhoto = "/api/users/account_update/secure/verifyPhoto"
@@ -101,10 +95,6 @@ enum APIRequestURLs: String {
         switch self {
         case .changeEmail:
             return .patch
-        case .changePassword:
-            return .patch
-        case .changePhone:
-            return .patch
         case .deletePhotos:
             return .delete
         case .deleteVideo:
@@ -115,22 +105,17 @@ enum APIRequestURLs: String {
             return .post
         case .uploadVideo:
             return .post
-        case .forgetPassword:
-            return .post
         case .getEmailCode:
             return .post
-        case .getSMSCode:
-            return .post
+        
         case .refreshToken:
             return .post
         case .signInWithEmail:
             return .post
-        case .signInWithPhone:
-            return .post
+
         case .signUpWithEmail:
             return .post
-        case .signUpWithPhone:
-            return .post
+
         case .exploreUsers:
             return .post
         case .followUser:
@@ -252,12 +237,8 @@ enum APIRequestURLs: String {
     
     static func needAuthToken(url: String) -> Bool {
         if url.contains(string: APIRequestURLs.getEmailCode.rawValue) ||
-            url.contains(string: APIRequestURLs.getSMSCode.rawValue) ||
             url.contains(string: APIRequestURLs.signInWithEmail.rawValue) ||
-            url.contains(string: APIRequestURLs.signInWithPhone.rawValue) ||
             url.contains(string: APIRequestURLs.signUpWithEmail.rawValue) ||
-            url.contains(string: APIRequestURLs.signUpWithPhone.rawValue) ||
-            url.contains(string: APIRequestURLs.forgetPassword.rawValue) ||
             url.contains(string: APIRequestURLs.refreshToken.rawValue) {
             return false
         }

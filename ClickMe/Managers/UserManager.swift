@@ -11,15 +11,11 @@ import Alamofire
 
 struct LoginInfo: Codable {
     var email: String?
-    var areaCode: String?
-    var phone: String?
     var token: String?
     var refreshToken: String?
     
     enum CodingKeys: String, CodingKey {
         case email
-        case areaCode
-        case phone
         case token
         case refreshToken
     }
@@ -103,72 +99,8 @@ class UserManager {
         }
     }
     
-    func sendPhoneCode(sender: UIButton? = nil, areaCode: String, phone: String) {
-        let originalTitle = sender?.titleLabel?.text
-        sender?.isEnabled = false
-        sender?.setTitle("Sending", for: .normal)
-        
-        FullScreenSpinner().show()
-        api.getSMSCode(areaCode: areaCode.numbers, phone: phone.numbers) { result in
-            sender?.setTitle(originalTitle, for: .normal)
-            sender?.isEnabled = true
-            
-            FullScreenSpinner().hide()
-            
-            switch result {
-            case .success:
-                sender?.setTitle("Sent", for: .normal)
-            case .failure(let error):
-                guard let errorCode = error.responseCode else {
-                    showNetworkErrorDialog()
-                    return
-                }
-                
-                if errorCode == 409 {
-                    showErrorDialog(error: "Wait 10 seconds before sending another code.")
-                } else if errorCode == 403 {
-                    showErrorDialog(error: "Can't send SMS phone number")
-                } else {
-                    showErrorDialog(error: error.errorDescription ?? "")
-                }
-            }
-        }
-    }
-    
-    func login(areaCode: String, phone: String, verifyCode: String, completion: @escaping (Bool) -> Void) {
-        api.login(areaCode: areaCode.numbers, phone: phone.numbers, smsCode: verifyCode) { [weak self] result in
-            guard let self = self else { return }
-            
-            switch result {
-            case .success(let response):
-                self.loginInfo.areaCode = areaCode
-                self.loginInfo.phone = phone
-                self.loginInfo.token = response.token
-                self.loginInfo.refreshToken = response.refreshToken
-                self.api.service.accessToken = response.token
-                self.saveLoginInfo()
-                completion(true)
-            case .failure(let error):
-                guard let errorCode = error.responseCode else {
-                    showNetworkErrorDialog()
-                    completion(false)
-                    return
-                }
-                
-                if errorCode == 405 {
-                    showErrorDialog(error: "Account with the phone number is not found")
-                } else if errorCode == 432 {
-                    showErrorDialog(error: "SMS code is incorrect")
-                } else {
-                    error.showErrorDialog()
-                }
-                completion(false)
-            }
-        }
-    }
-    
-    func login(email: String, password: String, completion: @escaping (Bool) -> Void) {
-        api.login(email: email, password: password) { [weak self] result in
+    func login(email: String, code: String, completion: @escaping (Bool) -> Void) {
+        api.login(email: email, code: code) { [weak self] result in
             guard let self = self else { return }
             
             switch result {
@@ -189,7 +121,7 @@ class UserManager {
                 if errorCode == 433 {
                     showErrorDialog(error: "Account with the email address is not found")
                 } else if errorCode == 434 {
-                    showErrorDialog(error: "Password is incorrect")
+                    showErrorDialog(error: "Verification is incorrect")
                 } else {
                     error.showErrorDialog()
                 }
@@ -923,29 +855,6 @@ class UserManager {
                     showErrorDialog(error: "New email already taken by someone else.")
                 } else if error.responseCode == 413 {
                     showErrorDialog(error: "Email code is wrong")
-                } else {
-                    error.showErrorDialog()
-                    print("Error occured \(error)")
-                }
-                
-                completion(false)
-            }
-        }
-    }
-    
-    func changePassword(oldPassword: String, password: String, completion: @escaping (Bool) -> Void) {
-        FullScreenSpinner().show()
-        api.changePassword(oldPassword: oldPassword, password: password) { result in
-            FullScreenSpinner().hide()
-            
-            switch result {
-            case .success:
-                completion(true)
-            case .failure(let error):
-                if error.responseCode == nil {
-                    showNetworkErrorDialog()
-                } else if error.responseCode == 427 {
-                    showErrorDialog(error: "Old password is incorrect.")
                 } else {
                     error.showErrorDialog()
                     print("Error occured \(error)")

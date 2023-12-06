@@ -18,7 +18,6 @@ target 'ClickMe' do
   pod 'FMSecureTextField'
   pod 'FSCalendar'
   pod 'Cosmos', '~> 23.0'
-  pod 'SKCountryPicker'
   pod 'LocationPicker'
   pod 'ExpandableLabel'
   pod "WSTagsField"
@@ -35,5 +34,4 @@ target 'ClickMe' do
   pod 'M13Checkbox'
   pod 'Mantis', '~> 1.7.2'
   pod 'JZCalendarWeekView'
-  pod 'Stripe'
 end
