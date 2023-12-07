@@ -12,13 +12,11 @@ protocol PeopleFilterViewControllerDelegate: class {
 }
 
 struct PeopleFilterCriteria {
-    var distance: Int = 1001
     var gender: GenderChoice?
     var field: UserField?
     
     func exploreEndpointParams(user: CompleteUser) -> ExploreUserParams {
         var params = ExploreUserParams()
-        params.distance = distance
         params.gender = gender == .unknown ? nil : gender
         params.languages = user.languages
         params.field = field
@@ -31,8 +29,6 @@ class PeopleFilterViewController: BaseViewController {
     
     @IBOutlet weak var genderCollectionView: UICollectionView!
     @IBOutlet weak var genderCollectionHeight: NSLayoutConstraint!
-    @IBOutlet weak var distanceLabel: UILabel!
-    @IBOutlet weak var distanceSlider: UISlider!
     @IBOutlet weak var expertiseCollectionView: UICollectionView!
     @IBOutlet weak var expertiseCollectionHeight: NSLayoutConstraint!
     @IBOutlet weak var applyButton: UIButton!
@@ -107,16 +103,6 @@ class PeopleFilterViewController: BaseViewController {
         
         genderCollectionView.reloadData()
         expertiseCollectionView.reloadData()
-    }
-
-    
-    @IBAction func distanceDragged(_ sender: UISlider) {
-        filter.distance = Int(sender.value)
-        if filter.distance >= Int(distanceSlider.maximumValue) {
-            distanceLabel.text = "Any distance"
-        } else {
-            distanceLabel.text = "Up to \(Int(distanceSlider.value)) km"
-        }
     }
     
     @IBAction func xPressed(_ sender: UIBarButtonItem) {

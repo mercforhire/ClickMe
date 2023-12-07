@@ -422,53 +422,6 @@
                                                     <constraint firstAttribute="bottom" secondItem="uB1-PN-fPX" secondAttribute="bottom" id="z3Y-gO-2NU"/>
                                                 </constraints>
                                             </view>
-                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tbJ-qa-pvY">
-                                                <rect key="frame" x="0.0" y="141.5" width="375" height="45"/>
-                                                <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LM1-y3-aw6" customClass="ThemeRoundedWhiteView" customModule="ClickMe" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="0.0" width="335" height="45"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="trB-ee-tKt" customClass="ThemeBlackTextLabel" customModule="ClickMe" customModuleProvider="target">
-                                                                <rect key="frame" x="15" y="15" width="68.5" height="0.0"/>
-                                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="up to xxx km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFJ-Mh-hQB" customClass="ThemeBlackTextLabel" customModule="ClickMe" customModuleProvider="target">
-                                                                <rect key="frame" x="121.5" y="25" width="92" height="0.0"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1001" minValue="1" maxValue="1001" translatesAutoresizingMaskIntoConstraints="NO" id="lzg-0V-jTX">
-                                                                <rect key="frame" x="13" y="30" width="309" height="1"/>
-                                                                <color key="tintColor" systemColor="systemIndigoColor"/>
-                                                                <connections>
-                                                                    <action selector="distanceDragged:" destination="hEu-HB-zaa" eventType="valueChanged" id="Flg-wU-x9a"/>
-                                                                </connections>
-                                                            </slider>
-                                                        </subviews>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstItem="lzg-0V-jTX" firstAttribute="leading" secondItem="LM1-y3-aw6" secondAttribute="leading" constant="15" id="2iE-cu-fkg"/>
-                                                            <constraint firstAttribute="bottom" secondItem="lzg-0V-jTX" secondAttribute="bottom" constant="15" id="GKV-Bs-jqZ"/>
-                                                            <constraint firstItem="dFJ-Mh-hQB" firstAttribute="top" secondItem="trB-ee-tKt" secondAttribute="bottom" constant="10" id="Igc-kR-JmO"/>
-                                                            <constraint firstItem="trB-ee-tKt" firstAttribute="leading" secondItem="LM1-y3-aw6" secondAttribute="leading" constant="15" id="Nc3-j7-SM4"/>
-                                                            <constraint firstItem="trB-ee-tKt" firstAttribute="top" secondItem="LM1-y3-aw6" secondAttribute="top" constant="15" id="RlX-TK-rPh"/>
-                                                            <constraint firstItem="dFJ-Mh-hQB" firstAttribute="centerX" secondItem="LM1-y3-aw6" secondAttribute="centerX" id="SqR-UC-VNr"/>
-                                                            <constraint firstAttribute="trailing" secondItem="lzg-0V-jTX" secondAttribute="trailing" constant="15" id="gVN-t6-1ub"/>
-                                                            <constraint firstItem="lzg-0V-jTX" firstAttribute="top" secondItem="dFJ-Mh-hQB" secondAttribute="bottom" constant="5" id="nIv-U4-jgx"/>
-                                                        </constraints>
-                                                    </view>
-                                                </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstItem="LM1-y3-aw6" firstAttribute="top" secondItem="tbJ-qa-pvY" secondAttribute="top" id="4oV-KG-KRc"/>
-                                                    <constraint firstAttribute="bottom" secondItem="LM1-y3-aw6" secondAttribute="bottom" id="687-Dq-vXi"/>
-                                                    <constraint firstItem="LM1-y3-aw6" firstAttribute="leading" secondItem="tbJ-qa-pvY" secondAttribute="leading" constant="20" id="VjC-Rl-mDa"/>
-                                                    <constraint firstAttribute="trailing" secondItem="LM1-y3-aw6" secondAttribute="trailing" constant="20" id="kkD-gP-a4d"/>
-                                                </constraints>
-                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uJv-Ed-Vkq">
                                                 <rect key="frame" x="0.0" y="151.5" width="375" height="220.5"/>
                                                 <subviews>
@@ -645,8 +598,6 @@
                     <connections>
                         <outlet property="applyButton" destination="GD0-Nw-UbC" id="MRL-1v-obp"/>
                         <outlet property="clearButton" destination="83i-ZM-sLE" id="Moj-Sc-BhJ"/>
-                        <outlet property="distanceLabel" destination="dFJ-Mh-hQB" id="iKl-fd-NWF"/>
-                        <outlet property="distanceSlider" destination="lzg-0V-jTX" id="cis-if-TgI"/>
                         <outlet property="expertiseCollectionHeight" destination="7ka-St-JDz" id="4ie-QK-UD3"/>
                         <outlet property="expertiseCollectionView" destination="fza-IB-7Oa" id="UYE-qS-6CX"/>
                         <outlet property="genderCollectionHeight" destination="2C9-iC-FPd" id="mEn-QT-7fE"/>
