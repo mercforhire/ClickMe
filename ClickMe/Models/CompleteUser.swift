@@ -39,7 +39,6 @@ class CompleteUser: Codable {
     var videoThumbnailUrl: String?
     var gender: GenderChoice
     var languages: [Language]?
-    var seekingRomance: Bool
     var favoriteSchedules: [Int]?
     var blockedUsers: [Int]?
     var photoVerify: PhotoVerificationStatus?
@@ -81,7 +80,6 @@ class CompleteUser: Codable {
         case videoThumbnailUrl = "videoThumbnailUrl"
         case gender = "gender"
         case languages = "languages"
-        case seekingRomance = "seekingRomance"
         case receivedLikesFrom = "receivedLikes"
         case favoriteSchedules = "favoriteSchedules"
         case blockedUsers = "blockUsers"
@@ -188,7 +186,7 @@ class CompleteUser: Codable {
     }
     
     var publicUser: PublicUser {
-        let publicUser = PublicUser(identifier: identifier, screenId: screenId, firstName: firstName, lastName: lastName, birthday: birthday, isBirthdayPublic: isBirthdayPublic, liveAt: liveAt, hometown: hometown, jobTitle: jobTitle, company: company, field: field, degree: degree, school: school, aboutMe: aboutMe, expertise: expertise, interests: interests, lookingFor: lookingFor, photos: photos, likes: likes, receivedLikesFrom: receivedLikesFrom, following: following, followers: followers, videoURL: videoURL, gender: gender, languages: languages, seekingRomance: seekingRomance, photoVerify: photoVerify, hostTotal: hostTotal, hostCount: hostSize, guestTotal: guestTotal, guestCount: guestSize, totalHostHours: totalHostHours)
+        let publicUser = PublicUser(identifier: identifier, screenId: screenId, firstName: firstName, lastName: lastName, birthday: birthday, isBirthdayPublic: isBirthdayPublic, liveAt: liveAt, hometown: hometown, jobTitle: jobTitle, company: company, field: field, degree: degree, school: school, aboutMe: aboutMe, expertise: expertise, interests: interests, lookingFor: lookingFor, photos: photos, likes: likes, receivedLikesFrom: receivedLikesFrom, following: following, followers: followers, videoURL: videoURL, gender: gender, languages: languages, photoVerify: photoVerify, hostTotal: hostTotal, hostCount: hostSize, guestTotal: guestTotal, guestCount: guestSize, totalHostHours: totalHostHours)
         return publicUser
     }
     
@@ -271,10 +269,6 @@ class CompleteUser: Codable {
         
         if let languages = params.languages {
             self.languages = languages
-        }
-        
-        if let seekingRomance = params.seekingRomance {
-            self.seekingRomance = seekingRomance
         }
     }
     

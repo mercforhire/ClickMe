@@ -60,7 +60,6 @@ class EditProfileViewController: BaseViewController {
         case divider3
         case location
         case divider4
-        case seekRomance
         case count
         
         func title() -> String {
@@ -91,9 +90,6 @@ class EditProfileViewController: BaseViewController {
                 
             case .location:
                 return "Location"
-                
-            case .seekRomance:
-                return "Seeking romance"
                 
             default:
                 return "DIVIDER"
@@ -230,17 +226,6 @@ class EditProfileViewController: BaseViewController {
                 self.tableView.reloadRows(at: [IndexPath(row: 0, section: MenuSections.myVideo.rawValue)], with: .none)
             } else {
                 sender.isEnabled = true
-            }
-        }
-    }
-    
-    @objc private func seekRomanceChanged(sender: UISwitch) {
-        var updateForm = UpdateUserParams()
-        updateForm.seekingRomance = sender.isOn
-        userManager.updateUser(params: updateForm) { success in
-            // reverse the change if network failure
-            if !success {
-                sender.isOn = !sender.isOn
             }
         }
     }
@@ -477,28 +462,14 @@ extension EditProfileViewController: UITableViewDataSource, UITableViewDelegate 
                 cell.contentView.backgroundColor = themeManager.themeData!.defaultBackground.hexColor
                 return cell
             } else {
-                switch row {
-                case .seekRomance:
-                    guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileSwitchViewCell", for: indexPath) as? ProfileSwitchViewCell else {
-                        return ProfileSwitchViewCell()
-                    }
-                    cell.label.text = BasicInfoMenuRows(rawValue: indexPath.row)?.title()
-                    cell.toggle.isOn = userManager.user?.seekingRomance ?? false
-                    cell.toggle.addTarget(self, action: #selector(seekRomanceChanged), for: .valueChanged)
-                    cell.insertOnePixelSeparator(color: themeManager.themeData!.defaultBackground.hexColor,
-                                                 inset: 40,
-                                                 position: .bottom)
-                    return cell
-                default:
-                    guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileMenuCell", for: indexPath) as? ProfileMenuCell else {
-                        return ProfileMenuCell()
-                    }
-                    cell.label.text = BasicInfoMenuRows(rawValue: indexPath.row)?.title()
-                    cell.insertOnePixelSeparator(color: themeManager.themeData!.defaultBackground.hexColor,
-                                                 inset: 40,
-                                                 position: .bottom)
-                    return cell
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileMenuCell", for: indexPath) as? ProfileMenuCell else {
+                    return ProfileMenuCell()
                 }
+                cell.label.text = BasicInfoMenuRows(rawValue: indexPath.row)?.title()
+                cell.insertOnePixelSeparator(color: themeManager.themeData!.defaultBackground.hexColor,
+                                             inset: 40,
+                                             position: .bottom)
+                return cell
             }
             
         case .aboutMe:

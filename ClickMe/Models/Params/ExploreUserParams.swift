@@ -15,7 +15,6 @@ struct ExploreUserParams {
     var geolocation: Geolocation = Geolocation()
     var languages: [Language]?
     var pageSize: Int?
-    var seekingRomance: Bool?
     var field: UserField?
 
     func params() -> Parameters {
@@ -44,8 +43,6 @@ struct ExploreUserParams {
         if let pageSize = pageSize {
             params["pageSize"] = pageSize
         }
-        
-        params["seekingRomance"] = seekingRomance ?? false
         
         if let field = field {
             params["field"] = field.rawValue

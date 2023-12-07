@@ -12,7 +12,6 @@ protocol PeopleFilterViewControllerDelegate: class {
 }
 
 struct PeopleFilterCriteria {
-    var seekingRomance: Bool = false
     var distance: Int = 1001
     var gender: GenderChoice?
     var field: UserField?
@@ -22,7 +21,6 @@ struct PeopleFilterCriteria {
         params.distance = distance
         params.gender = gender == .unknown ? nil : gender
         params.languages = user.languages
-        params.seekingRomance = seekingRomance
         params.field = field
         return params
     }
@@ -33,7 +31,6 @@ class PeopleFilterViewController: BaseViewController {
     
     @IBOutlet weak var genderCollectionView: UICollectionView!
     @IBOutlet weak var genderCollectionHeight: NSLayoutConstraint!
-    @IBOutlet weak var romanceSwitch: UISwitch!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var distanceSlider: UISlider!
     @IBOutlet weak var expertiseCollectionView: UICollectionView!
@@ -101,7 +98,6 @@ class PeopleFilterViewController: BaseViewController {
     }
     
     private func refreshDisplay() {
-        romanceSwitch.isOn = filter.seekingRomance
         distanceSlider.value = Float(filter.distance)
         if filter.distance >= Int(distanceSlider.maximumValue) {
             distanceLabel.text = "Any distance"
@@ -112,10 +108,7 @@ class PeopleFilterViewController: BaseViewController {
         genderCollectionView.reloadData()
         expertiseCollectionView.reloadData()
     }
-    
-    @IBAction func switchChanged(_ sender: UISwitch) {
-        filter.seekingRomance = sender.isOn
-    }
+
     
     @IBAction func distanceDragged(_ sender: UISlider) {
         filter.distance = Int(sender.value)

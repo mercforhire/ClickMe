@@ -10,7 +10,6 @@ target 'ClickMe' do
   pod 'SwiftRangeSlider', '~> 2.0'
   pod 'ScrollingContentViewController'
   pod 'KeyboardDismisser'
-  pod 'UITextView+Placeholder'
   pod 'BadgeSwift', '~> 8.0'
   pod 'CRRefresh'
   pod 'SwipeCellKit'

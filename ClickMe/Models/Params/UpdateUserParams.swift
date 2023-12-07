@@ -27,7 +27,6 @@ struct UpdateUserParams {
     var videoURL: String?
     var gender: GenderChoice?
     var languages: [Language]?
-    var seekingRomance: Bool?
     var userPhotos: [UploadPhotoResponse]?
     var favoriteSchedules: [Int]?
     
@@ -108,10 +107,6 @@ struct UpdateUserParams {
                 languagesArray.append(language.rawValue)
             }
             params["languages"] = languagesArray
-        }
-        
-        if let seekingRomance = seekingRomance {
-            params["seekingRomance"] = seekingRomance
         }
         
         if let userPhotos = userPhotos {

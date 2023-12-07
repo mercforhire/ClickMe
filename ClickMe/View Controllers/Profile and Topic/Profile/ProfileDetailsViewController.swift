@@ -37,7 +37,6 @@ class ProfileDetailsViewController: BaseViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var userIDLabel: UITextView!
     @IBOutlet weak var verifiedImage: UIImageView!
-    @IBOutlet weak var romanceImage: UIImageView!
     
     @IBOutlet weak var jobViewsContainer: UIView!
     @IBOutlet weak var skillIconView: UIImageView!
@@ -140,7 +139,6 @@ class ProfileDetailsViewController: BaseViewController {
         }
         userIDLabel.text = "ID: \(user.screenId ?? "")"
         verifiedImage.isHidden = user.photoVerify != .approved
-        romanceImage.isHidden = !user.seekingRomance
         skillIconView.image = user.field?.icon()
         
         jobLabel.text = user.jobDescription

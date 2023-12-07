@@ -34,7 +34,6 @@ struct PublicUser: Codable {
     var videoURL: String?
     var gender: GenderChoice
     var languages: [Language]?
-    var seekingRomance: Bool
     var photoVerify: PhotoVerificationStatus?
     var hostTotal: Int
     var hostCount: Int
@@ -67,7 +66,6 @@ struct PublicUser: Codable {
         case videoURL = "videoUrl"
         case gender = "gender"
         case languages = "languages"
-        case seekingRomance = "seekingRomance"
         case receivedLikesFrom = "receivedLikes"
         case photoVerify = "photoVerify"
         case hostTotal

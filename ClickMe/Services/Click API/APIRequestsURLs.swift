@@ -14,13 +14,14 @@ enum APIRequestURLs: String {
     case signInWithEmail = "/api/users/authentication/signInWithEmail"
     case signUpWithEmail = "/api/users/authentication/signUpWithEmail"
     
+    case getCompleteUser = "/api/users/dataquery/secure/getOwnUserProfile"
+    
     case exploreUsers = "/api/users/dataquery/secure/exploreUsers"
     case followUser = "/api/users/dataquery/secure/followUser"
     case getFollowees = "/api/users/dataquery/secure/getFollowees"
     case getFollowers = "/api/users/dataquery/secure/getFollowers"
     case unFollowUser = "/api/users/dataquery/secure/unFollowUser"
     case getUser = "/api/users/dataquery/secure/getUser"
-    case getCompleteUser = "/api/users/dataquery/secure/getUserPersonal"
     case likeUser = "/api/users/dataquery/secure/likeUser"
     case unlikeUser = "/api/users/dataquery/secure/unlikeUser"
     case blockUser = "/api/users/dataquery/secure/blockUser"
