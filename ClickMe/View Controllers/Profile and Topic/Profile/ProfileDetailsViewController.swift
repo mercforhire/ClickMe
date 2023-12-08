@@ -23,7 +23,6 @@ class ProfileDetailsViewController: BaseViewController {
     @IBOutlet weak var photoSectionHeight: NSLayoutConstraint!
     
     @IBOutlet weak var photoPageControl: UIPageControl!
-    @IBOutlet weak var likesCounterLabel: UILabel!
     @IBOutlet weak var roundCornersView: UIView!
     @IBOutlet weak var iAmHostButton: UIButton!
     @IBOutlet weak var cameraButton: UIButton!
@@ -31,12 +30,10 @@ class ProfileDetailsViewController: BaseViewController {
     @IBOutlet weak var followButton: UIButton!
     @IBOutlet weak var rightSideContainer: UIStackView!
     @IBOutlet weak var interactionButtonContainer: UIView!
-    @IBOutlet weak var likeButton: UIButton!
     
     @IBOutlet weak var nameViewsContainer: UIView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var userIDLabel: UITextView!
-    @IBOutlet weak var verifiedImage: UIImageView!
     
     @IBOutlet weak var jobViewsContainer: UIView!
     @IBOutlet weak var skillIconView: UIImageView!
@@ -138,7 +135,6 @@ class ProfileDetailsViewController: BaseViewController {
             nameLabel.text = "\(user.fullName)"
         }
         userIDLabel.text = "ID: \(user.screenId ?? "")"
-        verifiedImage.isHidden = user.photoVerify != .approved
         skillIconView.image = user.field?.icon()
         
         jobLabel.text = user.jobDescription
@@ -322,15 +318,6 @@ class ProfileDetailsViewController: BaseViewController {
         playVideo(urlString: urlString)
     }
     
-    @IBAction private func likePressed(_ sender: UIButton) {
-        guard let user = user else { return }
-        
-        if let likesList = userManager.user?.likes, likesList.contains(user.identifier) {
-            userManager.unlikeUser(userId: user.identifier, completion: likeActionCompletionHandler)
-        } else {
-            userManager.likeUser(userId: user.identifier, completion: likeActionCompletionHandler)
-        }
-    }
     
     @IBAction func followingTapped(_ sender: Any) {
         selectedAssociation = .following
@@ -420,17 +407,6 @@ class ProfileDetailsViewController: BaseViewController {
         } else {
             followButton.setImage(UIImage(systemName: "plus")!, for: .normal)
         }
-    }
-    
-    private func refreshLikeButton() {
-        guard let user = user else { return }
-        
-        if let likesList = userManager.user?.likes, likesList.contains(user.identifier) {
-            likeButton.setBackgroundImage(UIImage(systemName: "heart.fill")!, for: .normal)
-        } else {
-            likeButton.setBackgroundImage(UIImage(systemName: "heart")!, for: .normal)
-        }
-        likesCounterLabel.text = "\(user.receivedLikesFrom?.count ?? 0)"
     }
     
     private func fetchUser(completion: @escaping (Bool) -> Void) {

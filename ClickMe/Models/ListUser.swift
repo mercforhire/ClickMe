@@ -17,9 +17,7 @@ struct ListUser: Codable {
     var degree: String
     var jobTitle: String
     var avatar: Photo?
-    var receivedLikesFrom: [Int]?
     var field: UserField?
-    var photoVerify: PhotoVerificationStatus?
     var gender: GenderChoice
     
     enum CodingKeys: String, CodingKey {
@@ -31,8 +29,6 @@ struct ListUser: Codable {
         case degree = "degree"
         case school = "school"
         case avatar = "avatar"
-        case photoVerify = "photoVerify"
-        case receivedLikesFrom = "receivedLikes"
         case field = "field"
         case gender = "gender"
     }

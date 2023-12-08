@@ -132,7 +132,7 @@ extension ExploreViewController: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? PersonCell, let user = users?[indexPath.row] else {
             return PersonCell()
         }
-        cell.config(data: user, favorited: userManager.user?.likes?.contains(user.identifier) ?? false)
+        cell.config(data: user)
         return cell
     }
     

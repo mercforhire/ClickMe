@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import SKCountryPicker
 import PhotosUI
 
 extension UIViewController {
@@ -39,21 +38,7 @@ extension UIViewController {
         imageView.rightAnchor.constraint(equalTo: container.rightAnchor, constant: 0).isActive = true
         navigationItem.titleView = container
     }
-    
-    func getCurrentCountry() -> Country? {
-        let locale: NSLocale = NSLocale.current as NSLocale
-        if let currentCountryCode: String = locale.countryCode {
-            let countries = CountryManager.shared.countries
-            if let country = countries.filter({ subject in
-                return subject.countryCode == currentCountryCode
-            }).first {
-                return country
-            }
-        }
-        
-        return nil
-    }
-    
+
     func requestPhotoPermission(completion: @escaping (Bool) -> Void) {
         PHPhotoLibrary.requestAuthorization(for: .readWrite) { status in
             DispatchQueue.main.async {

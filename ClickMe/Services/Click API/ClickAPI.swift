@@ -259,36 +259,6 @@ class ClickAPI {
         }
     }
     
-    func likeUser(otherUserId: Int, callBack: @escaping(Result<Bool, AFError>) -> Void) {
-        let url = baseURL + APIRequestURLs.likeUser.rawValue
-        let params = ["otherUserId": otherUserId]
-        
-        service.httpRequestSimple(url: url, method: APIRequestURLs.likeUser.getHTTPMethod(), parameters: params, headers: Headers.defaultHeader()) { result in
-            switch result {
-            case .success:
-                callBack(.success(true))
-            case .failure(let error):
-                callBack(.failure(error))
-                print ("Error occured \(error)")
-            }
-        }
-    }
-    
-    func unlikeUser(otherUserId: Int, callBack: @escaping(Result<Bool, AFError>) -> Void) {
-        let url = baseURL + APIRequestURLs.unlikeUser.rawValue
-        let params = ["otherUserId": otherUserId]
-        
-        service.httpRequestSimple(url: url, method: APIRequestURLs.unlikeUser.getHTTPMethod(), parameters: params, headers: Headers.defaultHeader()) { result in
-            switch result {
-            case .success:
-                callBack(.success(true))
-            case .failure(let error):
-                callBack(.failure(error))
-                print ("Error occured \(error)")
-            }
-        }
-    }
-    
     func blockUser(otherUserId: Int, callBack: @escaping(Result<Bool, AFError>) -> Void) {
         let url = baseURL + APIRequestURLs.blockUser.rawValue
         let params = ["otherUserId": otherUserId]
@@ -354,21 +324,6 @@ class ClickAPI {
                       "emailCode": emailCode]
         
         service.httpRequestSimple(url: url, method: APIRequestURLs.changeEmail.getHTTPMethod(), parameters: params, headers: Headers.defaultHeader()) { result in
-            switch result {
-            case .success:
-                callBack(.success(true))
-            case .failure(let error):
-                callBack(.failure(error))
-                print ("Error occured \(error)")
-            }
-        }
-    }
-    
-    func switchPreferredAccount(newAccount: WalletType, callBack: @escaping(Result<Bool, AFError>) -> Void) {
-        let url = baseURL + APIRequestURLs.switchPreferredAccount.rawValue
-        let params = ["newAccount": newAccount.rawValue]
-        
-        service.httpRequestSimple(url: url, method: APIRequestURLs.switchPreferredAccount.getHTTPMethod(), parameters: params, headers: Headers.defaultHeader()) { result in
             switch result {
             case .success:
                 callBack(.success(true))
@@ -987,60 +942,6 @@ class ClickAPI {
         service.httpRequestSimple(url: url,
                                   method: APIRequestURLs.clearBadgeCount.getHTTPMethod(),
                                   parameters: nil,
-                                  headers: Headers.defaultHeader()) { result in
-            switch result {
-            case .success:
-                callBack(.success(true))
-            case .failure(let error):
-                callBack(.failure(error))
-                print ("Error occured \(error)")
-            }
-        }
-    }
-    
-    func setActivate(callBack: @escaping(Result<Bool, AFError>) -> Void) {
-        let url = baseURL + APIRequestURLs.setActivate.rawValue
-
-        service.httpRequestSimple(url: url,
-                                  method: APIRequestURLs.setActivate.getHTTPMethod(),
-                                  parameters: [:],
-                                  headers: Headers.defaultHeader()) { result in
-            switch result {
-            case .success:
-                callBack(.success(true))
-            case .failure(let error):
-                callBack(.failure(error))
-                print ("Error occured \(error)")
-            }
-        }
-    }
-    
-    func chargeNew(packageOption: String, callBack: @escaping(Result<ChargeNewResponse, AFError>) -> Void) {
-        let url = baseURL + APIRequestURLs.chargeNew.rawValue
-        let params: [String : Any] = ["currency": "cad", "description": "test", "packageOption": packageOption]
-        
-        service.httpRequest(url: url, method: APIRequestURLs.chargeNew.getHTTPMethod(), parameters: params, headers: Headers.defaultHeader()) { (result: AFResult<ChargeNewResponse>) in
-            switch result {
-            case .success(let response):
-                callBack(.success(response))
-            case .failure(let error):
-                callBack(.failure(error))
-                print ("Error occured \(error)")
-            }
-        }
-    }
-    
-    func cashOut(email: String,
-                 emailMessage: String,
-                 emailSubject: String,
-                 coins: Int,
-                 callBack: @escaping(Result<Bool, AFError>) -> Void) {
-        let url = baseURL + APIRequestURLs.cashOut.rawValue
-        let params: [String : Any] = ["email": email, "emailMessage": emailMessage, "emailSubject": emailSubject, "coins": coins]
-        
-        service.httpRequestSimple(url: url,
-                                  method: APIRequestURLs.cashOut.getHTTPMethod(),
-                                  parameters: params,
                                   headers: Headers.defaultHeader()) { result in
             switch result {
             case .success:

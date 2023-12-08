@@ -7,7 +7,6 @@
 
 import UIKit
 import AVKit
-import SKCountryPicker
 
 class BaseViewController: UIViewController {
     private var observer: NSObjectProtocol?
@@ -25,11 +24,7 @@ class BaseViewController: UIViewController {
     @IBOutlet weak var noResultsViewContainer: UIView!
     lazy var errorView = ErrorView.fromNib()! as! ErrorView
     
-    var countryPicker: UIPickerView?
-    var countries: [Country]?
-    var areaCodeFields: [UITextField] = []
     var tutorialManager: TutorialManager?
-    open var selectedCountry: Country?
     
     func setup() {
         // override
@@ -115,61 +110,9 @@ class BaseViewController: UIViewController {
         }
     }
     
-    func attachCountryPicker(to textField: UITextField) {
-        countryPicker = UIPickerView()
-        countryPicker?.delegate = self
-        countryPicker?.dataSource = self
-        countries = CountryManager.shared.countries
-        
-        if let currentC = getCurrentCountry() {
-            countries?.insert(currentC, at: 0)
-        }
-        
-        textField.inputView = countryPicker
-        
-        if !areaCodeFields.contains(textField) {
-            areaCodeFields.append(textField)
-        }
-    }
-    
     deinit {
         if observer != nil {
             NotificationCenter.default.removeObserver(observer!)
-        }
-    }
-}
-
-extension BaseViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if pickerView == countryPicker {
-            return countries?.count ?? 0
-        }
-        return 0
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        guard let country = countries?[row] else { return "" }
-        
-        return "\(country.dialingCode ?? "") \(country.englishName)"
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        guard let country = countries?[row] else { return }
-        
-        selectedCountry = country
-    }
-}
-
-extension BaseViewController: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        if areaCodeFields.contains(textField) {
-            if let selectedCountry = selectedCountry, let index = countries?.firstIndex(of: selectedCountry) {
-                countryPicker?.selectRow(index, inComponent: 0, animated: false)
-            }
         }
     }
 }

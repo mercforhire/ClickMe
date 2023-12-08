@@ -41,28 +41,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if UserManager.shared.user != nil {
             ClickAPI.shared.clearBadgeCount { _ in
             }
-            if AppSettingsManager.shared.getLastSetActiveTime() == nil {
-                ClickAPI.shared.setActivate { result in
-                    switch result {
-                    case .success:
-                        AppSettingsManager.shared.setLastSetActiveTime(date: Date())
-                    default:
-                        break
-                    }
-                }
-            } else if let lastSetActiveTime = AppSettingsManager.shared.getLastSetActiveTime() {
-                let delta = Date() - lastSetActiveTime
-                if (delta / 3600) > 4.0 {
-                    ClickAPI.shared.setActivate { result in
-                        switch result {
-                        case .success:
-                            AppSettingsManager.shared.setLastSetActiveTime(date: Date())
-                        default:
-                            break
-                        }
-                    }
-                }
-            }
         }
         
         print("WillEnterForeground")

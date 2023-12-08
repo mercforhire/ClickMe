@@ -30,18 +30,14 @@ class CompleteUser: Codable {
     var interests: [String]?
     var lookingFor: String
     var photos: [Photo]?
-    var likes: [Int]?
-    var receivedLikesFrom: [Int]?
     var following: [Int]?
     var followers: [Int]?
-    var verified: Bool
     var videoURL: String?
     var videoThumbnailUrl: String?
     var gender: GenderChoice
     var languages: [Language]?
     var favoriteSchedules: [Int]?
     var blockedUsers: [Int]?
-    var photoVerify: PhotoVerificationStatus?
     var cancelCounter: Int?
     var wallet: Wallet?
     var hostTotal: Int
@@ -72,18 +68,14 @@ class CompleteUser: Codable {
         case interests = "interests"
         case lookingFor = "lookingFor"
         case photos = "photos"
-        case likes = "likes"
         case following = "followeeList"
         case followers = "followerList"
-        case verified = "verify"
         case videoURL = "videoUrl"
         case videoThumbnailUrl = "videoThumbnailUrl"
         case gender = "gender"
         case languages = "languages"
-        case receivedLikesFrom = "receivedLikes"
         case favoriteSchedules = "favoriteSchedules"
         case blockedUsers = "blockUsers"
-        case photoVerify = "photoVerify"
         case cancelCounter = "cancelCounter"
         case wallet = "myCoins"
         case hostTotal
@@ -186,7 +178,7 @@ class CompleteUser: Codable {
     }
     
     var publicUser: PublicUser {
-        let publicUser = PublicUser(identifier: identifier, screenId: screenId, firstName: firstName, lastName: lastName, birthday: birthday, isBirthdayPublic: isBirthdayPublic, liveAt: liveAt, hometown: hometown, jobTitle: jobTitle, company: company, field: field, degree: degree, school: school, aboutMe: aboutMe, expertise: expertise, interests: interests, lookingFor: lookingFor, photos: photos, likes: likes, receivedLikesFrom: receivedLikesFrom, following: following, followers: followers, videoURL: videoURL, gender: gender, languages: languages, photoVerify: photoVerify, hostTotal: hostTotal, hostCount: hostSize, guestTotal: guestTotal, guestCount: guestSize, totalHostHours: totalHostHours)
+        let publicUser = PublicUser(identifier: identifier, screenId: screenId, firstName: firstName, lastName: lastName, birthday: birthday, isBirthdayPublic: isBirthdayPublic, liveAt: liveAt, hometown: hometown, jobTitle: jobTitle, company: company, field: field, degree: degree, school: school, aboutMe: aboutMe, expertise: expertise, interests: interests, lookingFor: lookingFor, photos: photos, following: following, followers: followers, videoURL: videoURL, gender: gender, languages: languages, hostTotal: hostTotal, hostCount: hostSize, guestTotal: guestTotal, guestCount: guestSize, totalHostHours: totalHostHours)
         return publicUser
     }
     
@@ -273,7 +265,7 @@ class CompleteUser: Codable {
     }
     
     func toSimpleUser() -> ListUser {
-        return ListUser(identifier: identifier, firstName: firstName, lastName: lastName, company: company, school: school, degree: degree, jobTitle: jobTitle, avatar: photos?.first, photoVerify: photoVerify, gender: gender)
+        return ListUser(identifier: identifier, firstName: firstName, lastName: lastName, company: company, school: school, degree: degree, jobTitle: jobTitle, avatar: photos?.first, gender: gender)
     }
     
     var isMyself: Bool {

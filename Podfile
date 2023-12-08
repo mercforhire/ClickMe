@@ -21,7 +21,7 @@ target 'ClickMe' do
   pod 'ExpandableLabel'
   pod "WSTagsField"
   pod 'Alamofire', '~> 5.2'
-  pod 'Kingfisher', '~> 7.0'
+  pod 'Kingfisher', '7.6.1'
   pod 'Valet'
   pod 'MonthYearPicker', '~> 4.0.2'
   pod 'AGEVideoLayout'
@@ -37,7 +37,7 @@ target 'ClickMe' do
   post_install do |installer|
     installer.pods_project.targets.each do |target|
       target.build_configurations.each do |config|
-        config.build_settings["IPHONEOS_DEPLOYMENT_TARGET"] = "15.0"
+        config.build_settings["IPHONEOS_DEPLOYMENT_TARGET"] = "16.0"
       end
     end
   end

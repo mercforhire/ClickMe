@@ -57,7 +57,6 @@ class MyProfileViewController: BaseViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var jobLabel: UILabel!
     @IBOutlet weak var screenIDLabel: UITextView!
-    @IBOutlet weak var likesCount: UILabel!
     @IBOutlet weak var followingCount: UILabel!
     @IBOutlet weak var followersCount: UILabel!
     
@@ -99,14 +98,6 @@ class MyProfileViewController: BaseViewController {
         tableview.updateHeaderViewHeight()
     }
     
-    @IBAction func likesTapped(_ sender: UITapGestureRecognizer) {
-        guard let user = userManager.user, let likes = user.receivedLikesFrom?.count, likes > 0 else { return }
-        
-        let dialog = LikesDialog()
-        dialog.configure(numberOfLikes: likes, showDimOverlay: true, overUIWindow: true)
-        dialog.show(inView: view, withDelay: 100)
-    }
-    
     @IBAction func followingTapped(_ sender: Any) {
         selectedAssociation = .following
         performSegue(withIdentifier: "goToManageFollowers", sender: self)
@@ -139,7 +130,6 @@ class MyProfileViewController: BaseViewController {
         nameLabel.text = user.fullNameAndAge
         jobLabel.text = user.jobDescription
         screenIDLabel.text = "ID#: \(user.screenId)"
-        likesCount.text = "\(user.receivedLikesFrom?.count ?? 0)"
         followingCount.text = "\(user.following?.count ?? 0)"
         followersCount.text = "\(user.followers?.count ?? 0)"
     }

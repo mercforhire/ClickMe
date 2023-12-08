@@ -22,15 +22,12 @@ enum APIRequestURLs: String {
     case getFollowers = "/api/users/dataquery/secure/getFollowers"
     case unFollowUser = "/api/users/dataquery/secure/unFollowUser"
     case getUser = "/api/users/dataquery/secure/getUser"
-    case likeUser = "/api/users/dataquery/secure/likeUser"
-    case unlikeUser = "/api/users/dataquery/secure/unlikeUser"
     case blockUser = "/api/users/dataquery/secure/blockUser"
     case unblockUser = "/api/users/dataquery/secure/unblockUser"
     case searchUsers = "/api/users/dataquery/secure/searchUser"
     case reportUser = "/api/users/dataquery/secure/reportUser"
     case tipUser = "/api/users/dataquery/secure/tipUser"
     case getBlockUsers = "/api/users/dataquery/secure/getBlockUsers"
-    
     
     case followedSchedules = "/api/schedules/secure/getFollowedSchedules"
     case getMyBookedSchedules = "/api/schedules/secure/getMyBookedSchedules"
@@ -78,9 +75,6 @@ enum APIRequestURLs: String {
     case uploadVideo = "/api/users/account_update/secure/uploadVideo"
     case changeEmail = "/api/users/account_update/secure/changeEmail"
     case followOrUnfollowSchedule = "/api/users/account_update/secure/followOrUnfollowSchedule"
-    case verifyPhoto = "/api/users/account_update/secure/verifyPhoto"
-    case switchPreferredAccount = "/api/users/account_update/secure/switchPreferredAccount"
-    case setActivate = "/api/users/account_update/secure/setActivate"
     
     case postFeedback = "/api/feedback/secure/postFeedback"
     case getFeedbacks = "/api/feedback/secure/getFeedbacks"
@@ -88,9 +82,6 @@ enum APIRequestURLs: String {
     case saveToken = "/api/users/account_update/secure/saveToken"
     case removeDeviceToken = "/api/users/account_update/secure/removeDeviceToken"
     case clearBadgeCount = "/api/users/account_update/secure/clearBadgeCount"
-    
-    case chargeNew = "/api/payment/secure/chargeNew"
-    case cashOut = "/api/payment/secure/cashOut"
     
     func getHTTPMethod() -> HTTPMethod {
         switch self {
@@ -131,10 +122,6 @@ enum APIRequestURLs: String {
             return .post
         case .getCompleteUser:
             return .get
-        case .likeUser:
-            return .post
-        case .unlikeUser:
-            return .post
         case .postFeedback:
             return .post
         case .exploreSchedules:
@@ -195,10 +182,6 @@ enum APIRequestURLs: String {
             return .get
         case .getSchedule:
             return .get
-        case .verifyPhoto:
-            return .post
-        case .switchPreferredAccount:
-            return .patch
         case .getLog:
             return .get
         case .updateStatus:
@@ -227,12 +210,6 @@ enum APIRequestURLs: String {
             return .post
         case .getBlockUsers:
             return .get
-        case .setActivate:
-            return .patch
-        case .chargeNew:
-            return .post
-        case .cashOut:
-            return .post
         }
     }
     

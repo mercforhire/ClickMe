@@ -11,8 +11,6 @@ import Kingfisher
 class PersonCell: UITableViewCell {
     @IBOutlet weak var photoView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var verifiedImage: UIImageView!
-    @IBOutlet weak var favoritedImage: UIImageView!
     @IBOutlet weak var categoryImage: UIImageView!
     @IBOutlet weak var occupationLabel: UILabel!
     @IBOutlet weak var hotIcon: UIButton!
@@ -32,7 +30,7 @@ class PersonCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func config(data: ListUser, favorited: Bool) {
+    func config(data: ListUser) {
         nameLabel.text = data.fullName
         occupationLabel.text = data.jobDescription
         
@@ -42,9 +40,6 @@ class PersonCell: UITableViewCell {
             photoView.image = data.defaultAvatar
         }
         
-        verifiedImage.isHidden = data.photoVerify != .approved
-        favoritedImage.image = favorited ? UIImage(systemName: "heart.fill")! : UIImage(systemName: "heart")!
         categoryImage.image = data.field?.icon()
-        hotIcon.setTitle(" \(data.receivedLikesFrom?.count ?? 0)", for: .normal)
     }
 }

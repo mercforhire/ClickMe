@@ -78,7 +78,6 @@ class PeopleFilterViewController: BaseViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        distanceSlider.setValue(distanceSlider.maximumValue, animated: false)
         resizeCollectionViews()
     }
     
@@ -94,13 +93,7 @@ class PeopleFilterViewController: BaseViewController {
     }
     
     private func refreshDisplay() {
-        distanceSlider.value = Float(filter.distance)
-        if filter.distance >= Int(distanceSlider.maximumValue) {
-            distanceLabel.text = "Any distance"
-        } else {
-            distanceLabel.text = "Up to \(Int(distanceSlider.value)) km"
-        }
-        
+
         genderCollectionView.reloadData()
         expertiseCollectionView.reloadData()
     }

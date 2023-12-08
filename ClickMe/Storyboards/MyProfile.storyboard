@@ -81,61 +81,17 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="XoX-G6-gc7">
                                             <rect key="frame" x="50" y="203" width="314" height="50"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Al-1n-enC">
-                                                    <rect key="frame" x="0.0" y="0.0" width="104.5" height="50"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Likes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3I-UV-eAK" customClass="ThemeBlackTextLabel" customModule="ClickMe" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="25.5" width="104.5" height="24.5"/>
-                                                            <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="14"/>
-                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="ecM-e4-VeK" customClass="ThemeBlackTextLabel" customModule="ClickMe" customModuleProvider="target">
-                                                            <rect key="frame" x="5" y="0.0" width="94.5" height="20.5"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="20.5" id="sk5-sE-T70"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="18"/>
-                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NFb-gA-IPV">
-                                                            <rect key="frame" x="103.5" y="0.0" width="1" height="50"/>
-                                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="1" id="kPM-qi-H21"/>
-                                                            </constraints>
-                                                        </view>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <gestureRecognizers/>
-                                                    <constraints>
-                                                        <constraint firstItem="K3I-UV-eAK" firstAttribute="leading" secondItem="3Al-1n-enC" secondAttribute="leading" id="1ke-6l-ler"/>
-                                                        <constraint firstItem="NFb-gA-IPV" firstAttribute="top" secondItem="3Al-1n-enC" secondAttribute="top" id="5sQ-xk-C0E"/>
-                                                        <constraint firstItem="K3I-UV-eAK" firstAttribute="top" secondItem="ecM-e4-VeK" secondAttribute="bottom" constant="5" id="DAP-hN-kze"/>
-                                                        <constraint firstAttribute="trailing" secondItem="ecM-e4-VeK" secondAttribute="trailing" constant="5" id="GhO-9g-TV3"/>
-                                                        <constraint firstAttribute="bottom" secondItem="K3I-UV-eAK" secondAttribute="bottom" id="H3B-zw-Nxv"/>
-                                                        <constraint firstItem="ecM-e4-VeK" firstAttribute="top" secondItem="3Al-1n-enC" secondAttribute="top" id="SKE-Fj-Af7"/>
-                                                        <constraint firstAttribute="trailing" secondItem="K3I-UV-eAK" secondAttribute="trailing" id="gO0-f8-oZ2"/>
-                                                        <constraint firstAttribute="bottom" secondItem="NFb-gA-IPV" secondAttribute="bottom" id="h43-yW-EcQ"/>
-                                                        <constraint firstAttribute="trailing" secondItem="NFb-gA-IPV" secondAttribute="trailing" id="s68-DN-Vh7"/>
-                                                        <constraint firstItem="ecM-e4-VeK" firstAttribute="leading" secondItem="3Al-1n-enC" secondAttribute="leading" constant="5" id="zfJ-JC-p4G"/>
-                                                    </constraints>
-                                                    <connections>
-                                                        <outletCollection property="gestureRecognizers" destination="2LN-9O-k44" appends="YES" id="GdB-De-WtD"/>
-                                                    </connections>
-                                                </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ILV-lq-jlS">
-                                                    <rect key="frame" x="104.5" y="0.0" width="105" height="50"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="157" height="50"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Following" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vP0-TO-qOk" customClass="ThemeBlackTextLabel" customModule="ClickMe" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="25.5" width="105" height="24.5"/>
+                                                            <rect key="frame" x="0.0" y="25.5" width="157" height="24.5"/>
                                                             <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="14"/>
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="5Ii-Ee-jX2" customClass="ThemeBlackTextLabel" customModule="ClickMe" customModuleProvider="target">
-                                                            <rect key="frame" x="5" y="0.0" width="95" height="20.5"/>
+                                                            <rect key="frame" x="5" y="0.0" width="147" height="20.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20.5" id="cS6-Ba-47j"/>
                                                             </constraints>
@@ -144,7 +100,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5kz-gU-OX7">
-                                                            <rect key="frame" x="104" y="0.0" width="1" height="50"/>
+                                                            <rect key="frame" x="156" y="0.0" width="1" height="50"/>
                                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="1" id="xQz-vD-WDw"/>
@@ -171,10 +127,10 @@
                                                     </connections>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YBd-GV-fi4">
-                                                    <rect key="frame" x="209.5" y="0.0" width="104.5" height="50"/>
+                                                    <rect key="frame" x="157" y="0.0" width="157" height="50"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="otc-Zx-gYy" customClass="ThemeBlackTextLabel" customModule="ClickMe" customModuleProvider="target">
-                                                            <rect key="frame" x="5" y="0.0" width="94.5" height="20.5"/>
+                                                            <rect key="frame" x="5" y="0.0" width="147" height="20.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20.5" id="evY-ii-ZJ1"/>
                                                             </constraints>
@@ -183,7 +139,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Followers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKO-dZ-4hZ" customClass="ThemeBlackTextLabel" customModule="ClickMe" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="25.5" width="104.5" height="24.5"/>
+                                                            <rect key="frame" x="0.0" y="25.5" width="157" height="24.5"/>
                                                             <fontDescription key="fontDescription" name="SFUIDisplay-Regular" family="SF UI Display" pointSize="14"/>
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -382,7 +338,6 @@
                         <outlet property="followersCount" destination="otc-Zx-gYy" id="he8-UC-bFu"/>
                         <outlet property="followingCount" destination="5Ii-Ee-jX2" id="oJJ-N2-3cn"/>
                         <outlet property="jobLabel" destination="qR4-Nm-dXF" id="WtN-ut-7LP"/>
-                        <outlet property="likesCount" destination="ecM-e4-VeK" id="hqO-vs-dq9"/>
                         <outlet property="nameLabel" destination="xGu-k1-FLw" id="6fT-66-EHt"/>
                         <outlet property="profileImage" destination="EhE-62-8nv" id="Vpi-qI-9eM"/>
                         <outlet property="screenIDLabel" destination="RGO-xT-0fs" id="cyb-I0-pmg"/>
@@ -394,11 +349,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WKP-mc-67K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="2LN-9O-k44" userLabel="Likes Tap">
-                    <connections>
-                        <action selector="likesTapped:" destination="sgj-nY-Zma" id="tyh-yO-xcx"/>
-                    </connections>
-                </tapGestureRecognizer>
                 <tapGestureRecognizer id="Rxc-0D-ZP0" userLabel="Following Tap">
                     <connections>
                         <action selector="followingTapped:" destination="sgj-nY-Zma" id="vio-hJ-0Nk"/>
@@ -910,16 +860,6 @@
             </objects>
             <point key="canvasLocation" x="1091" y="1141"/>
         </scene>
-        <!--Verify-->
-        <scene sceneID="Puf-SZ-qWZ">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Verify" id="rJs-rH-QXh" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="ahO-r3-syx"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Iw6-zj-IVA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1132" y="-970"/>
-        </scene>
         <!--Settings-->
         <scene sceneID="oH4-SR-fpx">
             <objects>
@@ -1047,7 +987,6 @@
                     <connections>
                         <outlet property="tableView" destination="iTi-b1-qK5" id="qub-W7-g60"/>
                         <segue destination="idc-oa-NB5" kind="show" identifier="goToAccountSettings" id="uqO-81-2wE"/>
-                        <segue destination="rJs-rH-QXh" kind="show" identifier="goToVerify" id="rmB-Cu-9oe"/>
                         <segue destination="9qm-3u-rsh" kind="show" identifier="goToBlockedUsers" id="zX5-el-yMS"/>
                     </connections>
                 </viewController>

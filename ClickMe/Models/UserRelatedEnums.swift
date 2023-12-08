@@ -8,20 +8,6 @@
 import Foundation
 import UIKit
 
-enum PhotoVerificationStatus: String, Codable {
-    case noverified
-    case pending
-    case approved
-    case unknown = "unknown"
-}
-
-extension PhotoVerificationStatus {
-    init(from decoder: Decoder) throws {
-        self = try PhotoVerificationStatus(rawValue: decoder.singleValueContainer().decode(RawValue.self)) ?? .unknown
-    }
-}
-
-
 enum GenderChoice: String, Codable {
     case male = "man"
     case female = "woman"

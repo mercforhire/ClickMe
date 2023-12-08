@@ -27,14 +27,11 @@ struct PublicUser: Codable {
     var interests: [String]?
     var lookingFor: String
     var photos: [Photo]?
-    var likes: [Int]?
-    var receivedLikesFrom: [Int]?
     var following: [Int]?
     var followers: [Int]?
     var videoURL: String?
     var gender: GenderChoice
     var languages: [Language]?
-    var photoVerify: PhotoVerificationStatus?
     var hostTotal: Int
     var hostCount: Int
     var guestTotal: Int
@@ -60,14 +57,11 @@ struct PublicUser: Codable {
         case interests = "interests"
         case lookingFor = "lookingFor"
         case photos = "photos"
-        case likes = "likes"
         case following = "followeeList"
         case followers = "followerList"
         case videoURL = "videoUrl"
         case gender = "gender"
         case languages = "languages"
-        case receivedLikesFrom = "receivedLikes"
-        case photoVerify = "photoVerify"
         case hostTotal
         case hostCount
         case guestTotal
@@ -135,7 +129,7 @@ struct PublicUser: Codable {
     }
     
     func toSimpleUser() -> ListUser {
-        return ListUser(identifier: identifier, firstName: firstName, lastName: lastName, company: company, school: school, degree: degree, jobTitle: jobTitle, avatar: photos?.first, photoVerify: photoVerify, gender: gender)
+        return ListUser(identifier: identifier, firstName: firstName, lastName: lastName, company: company, school: school, degree: degree, jobTitle: jobTitle, avatar: photos?.first, gender: gender)
     }
     
     var isMyself: Bool {
