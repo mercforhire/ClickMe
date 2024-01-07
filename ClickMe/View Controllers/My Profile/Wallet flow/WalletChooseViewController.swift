@@ -56,22 +56,10 @@ class WalletChooseViewController: BaseViewController {
     }
     
     @IBAction func purchasedCoinsPress(_ sender: Any) {
-        userManager.changeWallet(newAccount: .purchased) { [weak self] success in
-            guard let self = self else { return }
-            
-            if success {
-                self.selection = .purchased
-            }
-        }
+        
     }
     
     @IBAction func earnedCoinsPress(_ sender: Any) {
-        userManager.changeWallet(newAccount: .earned) { [weak self] success in
-            guard let self = self else { return }
-            
-            if success {
-                self.selection = .earned
-            }
-        }
+        
     }
 }

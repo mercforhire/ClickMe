@@ -196,7 +196,6 @@ class ProfileDetailsViewController: BaseViewController {
         
         cameraButton.isHidden = user.videoURL?.isEmpty ?? true
         refreshActionButton()
-        refreshLikeButton()
         
         photoSectionHeight.constant = view.frame.height - nameViewsContainer.frame.height - jobViewsContainer.frame.height - followViewsContainer.frame.height - 60
         

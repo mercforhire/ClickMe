@@ -15,7 +15,6 @@ enum APIRequestURLs: String {
     case signUpWithEmail = "/api/users/authentication/signUpWithEmail"
     
     case getCompleteUser = "/api/users/dataquery/secure/getOwnUserProfile"
-    
     case exploreUsers = "/api/users/dataquery/secure/exploreUsers"
     case followUser = "/api/users/dataquery/secure/followUser"
     case getFollowees = "/api/users/dataquery/secure/getFollowees"
@@ -29,6 +28,8 @@ enum APIRequestURLs: String {
     case tipUser = "/api/users/dataquery/secure/tipUser"
     case getBlockUsers = "/api/users/dataquery/secure/getBlockUsers"
     
+    case followSchedule = "/api/users/account_update/secure/followSchedule"
+    case unfollowSchedule = "/api/users/account_update/secure/unfollowSchedule"
     case followedSchedules = "/api/schedules/secure/getFollowedSchedules"
     case getMyBookedSchedules = "/api/schedules/secure/getMyBookedSchedules"
     case getFavoriteSchedules = "/api/schedules/secure/getFavoriteSchedules"
@@ -74,7 +75,6 @@ enum APIRequestURLs: String {
     case deleteVideo = "/api/users/account_update/secure/deleteVideo"
     case uploadVideo = "/api/users/account_update/secure/uploadVideo"
     case changeEmail = "/api/users/account_update/secure/changeEmail"
-    case followOrUnfollowSchedule = "/api/users/account_update/secure/followOrUnfollowSchedule"
     
     case postFeedback = "/api/feedback/secure/postFeedback"
     case getFeedbacks = "/api/feedback/secure/getFeedbacks"
@@ -170,7 +170,9 @@ enum APIRequestURLs: String {
             return .post
         case .reportUser:
             return .post
-        case .followOrUnfollowSchedule:
+        case .followSchedule:
+            return .post
+        case .unfollowSchedule:
             return .post
         case .guestCancelBooking:
             return .patch

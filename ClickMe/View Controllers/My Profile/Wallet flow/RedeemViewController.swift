@@ -76,28 +76,6 @@ class RedeemViewController: BaseViewController {
            let amount = coinsField.text?.int,
            let email = emailField.text, !email.isEmpty {
             FullScreenSpinner().show()
-            api.cashOut(email: email,
-                        emailMessage: "ClickMe coins cashout",
-                        emailSubject: "ClickMe coins cashout",
-                        coins: amount) { [weak self] result in
-                guard let self = self else { return }
-                
-                FullScreenSpinner().hide()
-                
-                switch result {
-                case .success:
-                    self.performSegue(withIdentifier: "goToSuccess", sender: self)
-                case .failure(let error):
-                    if error.responseCode == nil {
-                        showNetworkErrorDialog()
-                    } else if error.responseCode == 415 {
-                        showErrorDialog(error: "Sorry, the cash out amount has reached for the day.($500)")
-                    } else {
-                        error.showErrorDialog()
-                        print("Error occured \(error)")
-                    }
-                }
-            }
         }
     }
     

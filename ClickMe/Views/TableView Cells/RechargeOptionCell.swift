@@ -52,11 +52,5 @@ class RechargeOptionCell: UITableViewCell {
         container2.backgroundColor = selected ? themeManager.themeData!.indigo.hexColor : themeManager.themeData!.whiteBackground.hexColor
     }
     
-    func config(data: RechargeOptionDataModel) {
-        coinsLabel.text = "\(data.coins) coins"
-        costLabel.text = "$\(String(format: "%.2f", data.cost))"
-        descriptionLabel.text = data.description
-        descriptionLabel.isHidden = data.description.isEmpty
-    }
 
 }

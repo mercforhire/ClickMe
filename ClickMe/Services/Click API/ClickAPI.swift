@@ -531,12 +531,29 @@ class ClickAPI {
         }
     }
     
-    func followOrUnfollowSchedule(scheduleId: Int, callBack: @escaping(Result<Bool, AFError>) -> Void) {
-        let url = baseURL + APIRequestURLs.followOrUnfollowSchedule.rawValue
+    func followSchedule(scheduleId: Int, callBack: @escaping(Result<Bool, AFError>) -> Void) {
+        let url = baseURL + APIRequestURLs.followSchedule.rawValue
         let params: [String: Any] = ["scheduleId": scheduleId]
         
         service.httpRequestSimple(url: url,
-                                  method: APIRequestURLs.followOrUnfollowSchedule.getHTTPMethod(),
+                                  method: APIRequestURLs.followSchedule.getHTTPMethod(),
+                                  parameters: params, headers: Headers.defaultHeader()) { result in
+            switch result {
+            case .success:
+                callBack(.success(true))
+            case .failure(let error):
+                callBack(.failure(error))
+                print ("Error occured \(error)")
+            }
+        }
+    }
+    
+    func unfollowSchedule(scheduleId: Int, callBack: @escaping(Result<Bool, AFError>) -> Void) {
+        let url = baseURL + APIRequestURLs.unfollowSchedule.rawValue
+        let params: [String: Any] = ["scheduleId": scheduleId]
+        
+        service.httpRequestSimple(url: url,
+                                  method: APIRequestURLs.unfollowSchedule.getHTTPMethod(),
                                   parameters: params, headers: Headers.defaultHeader()) { result in
             switch result {
             case .success:

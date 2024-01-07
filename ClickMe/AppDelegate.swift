@@ -17,9 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         KeyboardDismisser.shared.attach()
         
-        let env = AppSettingsManager.shared.getEnvironment()
-        ClickAPI.shared.baseURL = env.hostUrl()
-        
         if UITraitCollection.current.userInterfaceStyle == .dark {
             ThemeManager.shared.setDarkTheme()
         } else {

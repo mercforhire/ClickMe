@@ -364,7 +364,7 @@ class UserManager {
     
     func saveSchedule(scheduleId: Int, completion: @escaping (Bool) -> Void) {
         FullScreenSpinner().show()
-        api.followOrUnfollowSchedule(scheduleId: scheduleId) { [weak self] result in
+        api.followSchedule(scheduleId: scheduleId) { [weak self] result in
             guard let self = self else { return }
             
             FullScreenSpinner().hide()
@@ -389,7 +389,7 @@ class UserManager {
     
     func unSaveSchedule(scheduleId: Int, completion: @escaping (Bool) -> Void) {
         FullScreenSpinner().show()
-        api.followOrUnfollowSchedule(scheduleId: scheduleId) { [weak self] result in
+        api.unfollowSchedule(scheduleId: scheduleId) { [weak self] result in
             guard let self = self else { return }
             
             FullScreenSpinner().hide()
@@ -712,33 +712,6 @@ class UserManager {
         }
     }
     
-    func changePhone(areaCode: String, phone: String, smsCode: String, completion: @escaping (Bool) -> Void) {
-        FullScreenSpinner().show()
-        api.changePhone(areaCode: areaCode, phone: phone, smsCode: smsCode) { result in
-            FullScreenSpinner().hide()
-            
-            switch result {
-            case .success:
-                self.fetchUser { success in
-                    completion(success)
-                }
-            case .failure(let error):
-                if error.responseCode == nil {
-                    showNetworkErrorDialog()
-                } else if error.responseCode == 403 {
-                    showErrorDialog(error: "User with that phone number has already been registered.")
-                } else if error.responseCode == 428 {
-                    showErrorDialog(error: "SMS code is wrong")
-                } else {
-                    error.showErrorDialog()
-                    print("Error occured \(error)")
-                }
-                
-                completion(false)
-            }
-        }
-    }
-    
     func changeEmail(newEmail: String, emailCode: String, completion: @escaping (Bool) -> Void) {
         FullScreenSpinner().show()
         api.changeEmail(newEmail: newEmail, emailCode: emailCode) { result in
@@ -762,55 +735,6 @@ class UserManager {
                 }
                 
                 completion(false)
-            }
-        }
-    }
-    
-    func changeWallet(newAccount: WalletType, completion: @escaping (Bool) -> Void) {
-        var isSuccess: Bool = true
-        
-        FullScreenSpinner().show()
-        let queue = DispatchQueue.global(qos: .default)
-        queue.async { [weak self] in
-            guard let self = self else { return }
-            
-            let semaphore = DispatchSemaphore(value: 0)
-            
-            self.api.switchPreferredAccount(newAccount: newAccount) { result in
-                switch result {
-                case .success:
-                    isSuccess = true
-                case .failure(let error):
-                    if error.responseCode == nil {
-                        showNetworkErrorDialog()
-                    } else {
-                        error.showErrorDialog()
-                        print("Error occured \(error)")
-                    }
-                    isSuccess = false
-                }
-                
-                semaphore.signal()
-            }
-            semaphore.wait()
-            
-            guard isSuccess else {
-                DispatchQueue.main.async {
-                    FullScreenSpinner().hide()
-                    completion(false)
-                }
-                return
-            }
-            
-            self.fetchUser { success in
-                isSuccess = success
-                semaphore.signal()
-            }
-            semaphore.wait()
-            
-            DispatchQueue.main.async {
-                FullScreenSpinner().hide()
-                completion(true)
             }
         }
     }
